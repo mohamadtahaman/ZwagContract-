@@ -3,186 +3,621 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>نظام جمع بيانات العقد</title>
+<title>Arresalah Zentrum Berlin - نظام تسجيل العقد</title>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Amiri:wght@700&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, sans-serif; }
+  :root {
+    --green-dark: #1a4d3a;
+    --green-mid: #2d6a4f;
+    --green-light: #40916c;
+    --gold: #d4a944;
+    --gold-light: #e9c46a;
+    --cream: #f8f7f2;
+    --text-dark: #2d2d2d;
+    --text-gray: #6b6b6b;
+    --border: #e0ddd5;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    min-height: 100vh; padding: 15px; color: #222;
+    font-family: 'Tajawal', sans-serif;
+    background: var(--cream);
+    min-height: 100vh;
+    color: var(--text-dark);
+    line-height: 1.6;
   }
-  .header { text-align: center; color: white; margin-bottom: 18px; }
-  .header .logo {
-    width: 65px; height: 65px; background: #fff; border-radius: 50%;
-    display: inline-flex; align-items: center; justify-content: center;
-    font-size: 28px; color: #1e3c72; margin-bottom: 6px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  }
-  .header h1 { font-size: 20px; margin-top: 6px; }
-  .header p { font-size: 12px; opacity: 0.85; }
-  .container {
-    max-width: 950px; margin: 0 auto; background: #fff;
-    border-radius: 16px; padding: 22px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-  }
-  #verifyScreen { text-align: center; padding: 30px 10px; }
-  #verifyScreen h2 { color: #1e3c72; margin-bottom: 15px; font-size: 20px; }
-  #verifyScreen input {
-    width: 200px; padding: 12px; font-size: 18px; text-align: center;
-    letter-spacing: 3px; border: 2px solid #1e3c72; border-radius: 10px;
-    outline: none; text-transform: uppercase;
-  }
-  .btn {
-    background: #1e3c72; color: #fff; border: none; padding: 11px 24px;
-    border-radius: 10px; font-size: 15px; cursor: pointer; margin: 6px;
-    transition: 0.2s; font-family: inherit;
-  }
-  .btn:hover { background: #2a5298; transform: translateY(-2px); }
-  .btn:disabled { background: #999; cursor: not-allowed; transform: none; }
-  .btn.green { background: #1e8e3e; }
-  .btn.green:hover { background: #2ba84a; }
-  .btn.gray { background: #666; }
-  .btn.small { padding: 6px 12px; font-size: 12px; }
 
-  /* تبويبات الأطراف */
+  /* ============ الشريط العلوي ============ */
+  .topbar {
+    background: var(--green-dark);
+    color: #fff;
+    padding: 6px 20px;
+    font-size: 12px;
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+  .topbar a { color: var(--gold-light); text-decoration: none; }
+
+  /* ============ الهيدر ============ */
+  header {
+    background: #fff;
+    border-bottom: 3px solid var(--green-dark);
+    padding: 18px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .brand-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--green-dark);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    box-shadow: 0 4px 10px rgba(26,77,58,0.3);
+    border: 3px solid var(--gold);
+  }
+  .brand-text h1 {
+    font-family: 'Amiri', serif;
+    font-size: 22px;
+    color: var(--green-dark);
+    font-weight: 900;
+    line-height: 1.2;
+  }
+  .brand-text p {
+    font-size: 12px;
+    color: var(--text-gray);
+    letter-spacing: 1px;
+  }
+  .header-info {
+    font-size: 13px;
+    color: var(--text-gray);
+    text-align: left;
+    line-height: 1.5;
+  }
+  .header-info strong { color: var(--green-dark); }
+
+  /* ============ القسم الرئيسي ============ */
+  .hero {
+    background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
+    color: #fff;
+    text-align: center;
+    padding: 40px 20px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 20% 30%, rgba(212,169,68,0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(212,169,68,0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+  .hero .bismillah {
+    font-family: 'Amiri', serif;
+    font-size: 26px;
+    color: var(--gold-light);
+    margin-bottom: 15px;
+    font-weight: 700;
+  }
+  .hero h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .hero p {
+    font-size: 15px;
+    opacity: 0.9;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .hero .ornament {
+    width: 80px;
+    height: 3px;
+    background: var(--gold);
+    margin: 20px auto 0;
+    border-radius: 2px;
+  }
+
+  /* ============ البطاقة الرئيسية ============ */
+  .container {
+    max-width: 950px;
+    margin: -30px auto 30px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    position: relative;
+    z-index: 2;
+    border: 1px solid var(--border);
+  }
+
+  /* ============ شاشة التحقق ============ */
+  #verifyScreen {
+    text-align: center;
+    padding: 20px 10px 30px;
+  }
+  #verifyScreen .icon-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--green-dark), var(--green-light));
+    color: var(--gold);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    margin-bottom: 18px;
+    box-shadow: 0 8px 20px rgba(26,77,58,0.25);
+  }
+  #verifyScreen h2 {
+    color: var(--green-dark);
+    margin-bottom: 8px;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  #verifyScreen .subtitle {
+    color: var(--text-gray);
+    font-size: 14px;
+    margin-bottom: 25px;
+  }
+  #verifyScreen input {
+    width: 240px;
+    padding: 14px 18px;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 6px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    outline: none;
+    text-transform: uppercase;
+    font-family: 'Tajawal', monospace;
+    font-weight: 700;
+    color: var(--green-dark);
+    transition: 0.2s;
+    background: var(--cream);
+  }
+  #verifyScreen input:focus {
+    border-color: var(--green-dark);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(26,77,58,0.1);
+  }
+
+  /* ============ الأزرار ============ */
+  .btn {
+    background: var(--green-dark);
+    color: #fff;
+    border: none;
+    padding: 13px 30px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    margin: 8px 4px;
+    transition: 0.25s;
+    font-family: inherit;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .btn:hover {
+    background: var(--green-mid);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(26,77,58,0.3);
+  }
+  .btn:disabled {
+    background: #999;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+  .btn.gold {
+    background: var(--gold);
+    color: var(--green-dark);
+  }
+  .btn.gold:hover { background: var(--gold-light); }
+  .btn.green {
+    background: var(--green-dark);
+  }
+  .btn.gray {
+    background: #999;
+  }
+  .btn.small {
+    padding: 7px 14px;
+    font-size: 12px;
+  }
+
+  /* ============ تبويبات الأطراف ============ */
   .party-tabs {
-    display: flex; gap: 6px; flex-wrap: wrap;
-    margin-bottom: 18px; justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-bottom: 22px;
   }
   .party-tab {
-    padding: 8px 14px; border: 2px solid #ccc; border-radius: 10px;
-    background: #f5f5f5; cursor: pointer; font-size: 13px;
-    transition: 0.2s; font-weight: 600; color: #555;
+    padding: 12px 6px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    background: #fafaf7;
+    cursor: pointer;
+    font-size: 13px;
+    transition: 0.2s;
+    font-weight: 600;
+    color: var(--text-gray);
+    text-align: center;
+    position: relative;
   }
-  .party-tab.active { background: #1e3c72; color: #fff; border-color: #1e3c72; }
-  .party-tab.done { background: #1e8e3e; color: #fff; border-color: #1e8e3e; }
-  .party-tab.done::after { content: ' ✓'; }
+  .party-tab .tab-icon { font-size: 18px; display: block; margin-bottom: 3px; }
+  .party-tab:hover { border-color: var(--green-mid); }
+  .party-tab.active {
+    background: var(--green-dark);
+    color: #fff;
+    border-color: var(--green-dark);
+    box-shadow: 0 4px 12px rgba(26,77,58,0.25);
+  }
+  .party-tab.done {
+    background: #e8f3ed;
+    border-color: var(--green-light);
+    color: var(--green-dark);
+  }
+  .party-tab.done::after {
+    content: '✓';
+    position: absolute;
+    top: 4px;
+    left: 6px;
+    background: var(--green-dark);
+    color: #fff;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+  .party-tab.active.done { background: var(--green-dark); color: #fff; }
+  .party-tab.active.done::after { background: var(--gold); color: var(--green-dark); }
 
-  /* دائرة التقدم */
-  .progress-wrap { display: flex; justify-content: center; margin-bottom: 18px; }
+  /* ============ دائرة التقدم ============ */
+  .progress-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 20px;
+    background: var(--cream);
+    border-radius: 12px;
+    margin-bottom: 22px;
+    border: 1px solid var(--border);
+  }
   .progress-circle {
-    width: 100px; height: 100px; border-radius: 50%;
-    background: conic-gradient(#1e8e3e 0%, #e0e0e0 0%);
-    display: flex; align-items: center; justify-content: center; position: relative;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background: conic-gradient(var(--green-dark) 0%, #e0e0e0 0%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-shrink: 0;
   }
   .progress-circle::before {
-    content: ''; width: 78px; height: 78px; background: #fff;
-    border-radius: 50%; position: absolute;
+    content: '';
+    width: 58px;
+    height: 58px;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
   }
   .progress-circle span {
-    position: relative; font-size: 18px; font-weight: bold; color: #1e3c72;
+    position: relative;
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--green-dark);
+  }
+  .progress-text h4 {
+    font-size: 15px;
+    color: var(--green-dark);
+    margin-bottom: 3px;
+  }
+  .progress-text p {
+    font-size: 12px;
+    color: var(--text-gray);
   }
 
-  /* النموذج */
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  /* ============ النموذج ============ */
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .form-grid .full { grid-column: 1 / -1; }
   .field label {
-    display: block; font-size: 12px; margin-bottom: 4px;
-    color: #333; font-weight: 600;
+    display: block;
+    font-size: 13px;
+    margin-bottom: 5px;
+    color: var(--text-dark);
+    font-weight: 600;
   }
-  .field label .req { color: red; }
+  .field label .req { color: #c0392b; }
   .field input, .field select {
-    width: 100%; padding: 9px 10px; border: 1px solid #ccc;
-    border-radius: 8px; font-size: 14px; outline: none; transition: 0.2s;
+    width: 100%;
+    padding: 11px 13px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
     font-family: inherit;
+    background: #fafaf7;
+    color: var(--text-dark);
   }
   .field input:focus, .field select:focus {
-    border-color: #1e3c72; box-shadow: 0 0 0 3px rgba(30,60,114,0.15);
+    border-color: var(--green-dark);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(26,77,58,0.08);
   }
   .date-inputs { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
-  .date-inputs input { text-align: center; }
+  .date-inputs input { text-align: center; font-weight: 600; }
   .address-sub { display: grid; grid-template-columns: 1fr 2fr; gap: 8px; grid-column: 1 / -1; }
   .address-sub2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; grid-column: 1 / -1; }
   .section-title {
-    grid-column: 1 / -1; font-size: 14px; color: #1e3c72;
-    border-bottom: 2px solid #1e3c72; padding-bottom: 5px;
-    margin-top: 10px; font-weight: bold;
+    grid-column: 1 / -1;
+    font-size: 14px;
+    color: var(--green-dark);
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 6px;
+    margin-top: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
+  .section-title::before {
+    content: '';
+    width: 4px;
+    height: 16px;
+    background: var(--gold);
+    border-radius: 2px;
+  }
+
+  /* ============ خيار لا يوجد ولي ============ */
   .wali-note {
-    grid-column: 1 / -1; padding: 12px; background: #fff8e1;
-    border: 2px dashed #f0a500; border-radius: 10px;
-    display: flex; align-items: center; gap: 10px;
+    grid-column: 1 / -1;
+    padding: 14px;
+    background: #fffbf0;
+    border: 2px dashed var(--gold);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
-  .wali-note input[type="checkbox"] { width: 22px; height: 22px; cursor: pointer; }
-  .wali-note label { font-weight: bold; color: #b8860b; cursor: pointer; margin: 0; }
+  .wali-note input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    accent-color: var(--green-dark);
+  }
+  .wali-note label {
+    font-weight: 700;
+    color: #8b6f1e;
+    cursor: pointer;
+    margin: 0;
+    font-size: 14px;
+  }
   .wali-none-text {
-    grid-column: 1 / -1; padding: 18px; background: #e8f5e9;
-    border: 2px solid #1e8e3e; border-radius: 10px;
-    text-align: center; font-size: 16px; font-weight: bold; color: #1e8e3e;
+    grid-column: 1 / -1;
+    padding: 25px;
+    background: linear-gradient(135deg, #e8f3ed, #f0f9f3);
+    border: 2px solid var(--green-light);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--green-dark);
   }
+
+  /* ============ صندوق النجاح ============ */
   .success-box {
-    text-align: center; padding: 40px 20px;
-    background: #e8f5e9; border-radius: 12px;
-    color: #1e8e3e; font-size: 18px; font-weight: bold;
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(135deg, #e8f3ed, #f0f9f3);
+    border-radius: 12px;
+    color: var(--green-dark);
+    font-size: 18px;
+    font-weight: 700;
+    border: 2px solid var(--green-light);
+  }
+  .success-box .big-check {
+    font-size: 60px;
+    margin-bottom: 15px;
+    display: block;
   }
   .success-box small {
-    display: block; color: #666; font-size: 13px;
-    margin-top: 10px; font-weight: normal;
+    display: block;
+    color: var(--text-gray);
+    font-size: 13px;
+    margin-top: 10px;
+    font-weight: normal;
   }
+
   .hidden { display: none !important; }
+
+  /* ============ رابط الإدارة ============ */
   .admin-link {
-    text-align: center; margin-top: 20px; font-size: 11px;
-    color: #aaa; cursor: pointer; user-select: none;
-    opacity: 0.5; transition: 0.2s;
-  }
-  .admin-link:hover { opacity: 1; color: #1e3c72; }
-  .toast {
-    position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-    background: #1e3c72; color: #fff; padding: 12px 22px;
-    border-radius: 10px; z-index: 200; font-size: 14px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3); max-width: 90%;
     text-align: center;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--border);
+    font-size: 11px;
+    color: #bbb;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.2s;
   }
-  .toast.error { background: #b3261e; }
-  .toast.success { background: #1e8e3e; }
+  .admin-link:hover { color: var(--green-dark); }
+
+  /* ============ Footer ============ */
+  footer {
+    background: var(--green-dark);
+    color: #c9d9d2;
+    text-align: center;
+    padding: 20px 15px;
+    font-size: 12px;
+    line-height: 1.8;
+  }
+  footer .footer-gold { color: var(--gold-light); font-weight: 700; }
+  footer a { color: var(--gold-light); text-decoration: none; }
+
+  /* ============ Toast ============ */
+  .toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--green-dark);
+    color: #fff;
+    padding: 13px 25px;
+    border-radius: 10px;
+    z-index: 200;
+    font-size: 14px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    max-width: 90%;
+    text-align: center;
+    font-weight: 600;
+    border-right: 4px solid var(--gold);
+  }
+  .toast.error { background: #a8332a; border-right-color: #f0a500; }
+  .toast.success { background: var(--green-dark); border-right-color: var(--gold); }
+
+  /* ============ Modal ============ */
   .modal-overlay {
-    position: fixed; inset: 0; background: rgba(0,0,0,0.6);
-    display: flex; align-items: center; justify-content: center; z-index: 100;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 15px;
   }
   .modal {
-    background: #fff; padding: 22px; border-radius: 14px;
-    width: 90%; max-width: 360px; text-align: center;
+    background: #fff;
+    padding: 28px 24px;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
   }
-  .modal h3 { color: #1e3c72; margin-bottom: 12px; }
+  .modal h3 {
+    color: var(--green-dark);
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
   .modal input {
-    width: 100%; padding: 11px; border: 2px solid #1e3c72;
-    border-radius: 8px; text-align: center; font-size: 16px;
-    letter-spacing: 3px; margin-bottom: 12px; outline: none;
+    width: 100%;
+    padding: 13px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+    outline: none;
+    background: var(--cream);
+    transition: 0.2s;
   }
-  @media (max-width: 640px) {
+  .modal input:focus {
+    border-color: var(--green-dark);
+    background: #fff;
+  }
+
+  /* ============ Responsive ============ */
+  @media (max-width: 720px) {
+    .party-tabs { grid-template-columns: repeat(3, 1fr); }
     .form-grid { grid-template-columns: 1fr; }
     .address-sub, .address-sub2 { grid-template-columns: 1fr; }
-    .header h1 { font-size: 17px; }
-    .container { padding: 15px; }
+    header { padding: 14px 18px; }
+    .brand-text h1 { font-size: 18px; }
+    .brand-logo { width: 50px; height: 50px; font-size: 24px; }
+    .hero h2 { font-size: 22px; }
+    .hero .bismillah { font-size: 22px; }
+    .container { padding: 20px; margin: -20px 12px 20px; }
+    .header-info { font-size: 11px; text-align: right; }
+    .progress-section { flex-direction: column; text-align: center; gap: 10px; }
+  }
+  @media (max-width: 480px) {
+    .party-tabs { grid-template-columns: repeat(2, 1fr); }
+    .party-tab { font-size: 12px; }
   }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="logo">⚖️</div>
-  <h1>مركز التوثيق والخدمات القانونية</h1>
-  <p>نظام جمع بيانات أطراف العقد</p>
+<!-- الشريط العلوي -->
+<div class="topbar">
+  🕌 Arresalah e.V. — Berlin · <span style="color: var(--gold-light);">Die Botschaft des Friedens</span>
 </div>
 
+<!-- الهيدر -->
+<header>
+  <div class="brand">
+    <div class="brand-logo">☪</div>
+    <div class="brand-text">
+      <h1>Arresalah Zentrum</h1>
+      <p>ISLAMISCHES ZENTRUM BERLIN</p>
+    </div>
+  </div>
+  <div class="header-info">
+    <strong>📞 Kontakt:</strong> +49 30 XXXXXXX<br>
+    <strong>📍</strong> Turnstraße 83, 10551 Berlin
+  </div>
+</header>
+
+<!-- الهيرو -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+    <h2>نظام تسجيل بيانات عقد الزواج</h2>
+    <p>منصة إلكترونية لتسجيل بيانات أطراف العقد بسهولة ودقة</p>
+    <div class="ornament"></div>
+  </div>
+</section>
+
+<!-- البطاقة الرئيسية -->
 <div class="container">
 
   <!-- شاشة التحقق -->
   <div id="verifyScreen">
-    <h2>🔐 التحقق من رقم العقد</h2>
-    <p style="color:#666; margin-bottom:15px; font-size:13px;">
-      أدخل رقم العقد للبدء في تعبئة بيانات الأطراف
-    </p>
+    <div class="icon-circle">🔐</div>
+    <h2>التحقق من رقم العقد</h2>
+    <p class="subtitle">أدخل رقم العقد للبدء في تعبئة بيانات الأطراف</p>
     <input type="text" id="contractCodeInput" placeholder="XXXXXX" maxlength="10">
     <br>
-    <button class="btn" onclick="verifyCode()">تأكيد</button>
+    <button class="btn gold" onclick="verifyCode()" style="margin-top:18px;">
+      متابعة ←
+    </button>
   </div>
 
   <!-- شاشة الإدخال -->
   <div id="inputScreen" class="hidden">
-    <div class="progress-wrap">
+
+    <div class="progress-section">
       <div class="progress-circle" id="progressCircle">
         <span id="progressText">0%</span>
+      </div>
+      <div class="progress-text">
+        <h4>اكتمال بيانات العقد</h4>
+        <p id="progressSubtext">0 من 5 أطراف مكتمل</p>
       </div>
     </div>
 
@@ -190,25 +625,43 @@
 
     <div id="partyFormWrap"></div>
 
-    <div id="submitArea" class="hidden" style="text-align:center; margin-top:20px;">
-      <button class="btn green" id="submitAllBtn" onclick="submitAllParties()">
-        ✅ إرسال العقد كاملاً
+    <div id="submitArea" class="hidden" style="text-align:center; margin-top:25px; padding-top:20px; border-top:2px dashed var(--border);">
+      <p style="color: var(--green-dark); font-weight: 700; margin-bottom:12px;">
+        ✅ اكتملت بيانات جميع الأطراف
+      </p>
+      <button class="btn gold" id="submitAllBtn" onclick="submitAllParties()" style="font-size: 16px; padding: 15px 40px;">
+        📨 إرسال العقد إلى المركز
       </button>
       <br>
       <button class="btn gray small" onclick="backToVerify()">← إلغاء</button>
     </div>
   </div>
 
-  <div class="admin-link" onclick="openAdminModal()">دخول المشرف / الإدارة</div>
+  <div class="admin-link" onclick="openAdminModal()">
+    • دخول المشرف / الإدارة •
+  </div>
 </div>
+
+<!-- Footer -->
+<footer>
+  <div style="font-family: 'Amiri', serif; font-size: 15px; color: var(--gold-light); margin-bottom: 5px;">
+    Arresalah e.V. — Berlin
+  </div>
+  <div>
+    Turnstraße 83, 10551 Berlin · <span class="footer-gold">Die Botschaft des Friedens</span>
+  </div>
+  <div style="font-size: 11px; opacity: 0.7; margin-top: 8px;">
+    © 2026 Arresalah Zentrum Berlin · جميع الحقوق محفوظة
+  </div>
+</footer>
 
 <!-- Modal كلمة مرور الإدارة -->
 <div id="pwModal" class="modal-overlay hidden">
   <div class="modal">
-    <h3>🔑 كلمة مرور الإدارة</h3>
+    <h3>🔑 دخول الإدارة</h3>
     <input type="password" id="pwInput" placeholder="••••••">
     <div>
-      <button class="btn" onclick="checkPw()">دخول</button>
+      <button class="btn green" onclick="checkPw()">دخول</button>
       <button class="btn gray" onclick="closeModal()">إلغاء</button>
     </div>
   </div>
@@ -221,15 +674,13 @@
 const EMAILJS_PUBLIC_KEY  = 'C8kuT0puk8RKrGYV_';
 const EMAILJS_SERVICE_ID  = 'service_fnme2dg';
 const EMAILJS_TEMPLATE_ID = 'template_5sftj1z';
-const ADMIN_EMAIL         = 'u6784554127@gmail.com'; // ← غيّره لبريدك الحقيقي
-
-/* كلمة مرور الإدارة (محلياً فقط) */
-const ADMIN_PASSWORD = '13053';
+const ADMIN_EMAIL         = 'arresalah@emailjs.com'; // ← غيّره لبريدك
+const ADMIN_PASSWORD      = '13053';
 
 emailjs.init(EMAILJS_PUBLIC_KEY);
 
 /* ============================================================
-   الأطراف الخمسة
+   الأطراف
 ============================================================ */
 const PARTY_DEFS = [
   { key: 'groom',    label: 'الزوج',         icon: '👨', isSpouse: true, isGroom: true },
@@ -238,15 +689,11 @@ const PARTY_DEFS = [
   { key: 'witness1', label: 'الشاهد الأول',  icon: '👤' },
   { key: 'witness2', label: 'الشاهد الثاني', icon: '👤' },
 ];
-
 const PARTIES_COUNT = 5;
 
-/* ============================================================
-   الحالة العامة
-============================================================ */
 let currentContractCode = null;
 let currentPartyIndex = 0;
-let contractData = {}; // يحتوي بيانات الأطراف الخمسة
+let contractData = {};
 
 /* ============================================================
    أدوات
@@ -258,12 +705,10 @@ function toast(msg, type='') {
   document.body.appendChild(el);
   setTimeout(() => el.remove(), 3000);
 }
-
 function esc(v) {
   if (v === undefined || v === null) return '';
   return String(v).replace(/"/g,'&quot;').replace(/</g,'&lt;');
 }
-
 function getBirthDate(p) {
   const d = (p.birthDay || '').padStart(2, '0');
   const m = (p.birthMonth || '').padStart(2, '0');
@@ -271,7 +716,6 @@ function getBirthDate(p) {
   if (!d || !m || !y) return '—';
   return `${d}.${m}.${y}`;
 }
-
 function emptyParty() {
   return {
     nameDe: '', nameAr: '',
@@ -286,7 +730,7 @@ function emptyParty() {
 }
 
 /* ============================================================
-   شاشة التحقق
+   التحقق
 ============================================================ */
 function verifyCode() {
   const input = document.getElementById('contractCodeInput').value.trim().toUpperCase();
@@ -295,8 +739,6 @@ function verifyCode() {
 
   currentContractCode = input;
   currentPartyIndex = 0;
-
-  // تهيئة بيانات الأطراف
   contractData = {};
   PARTY_DEFS.forEach(def => { contractData[def.key] = emptyParty(); });
 
@@ -315,7 +757,7 @@ function backToVerify() {
 }
 
 /* ============================================================
-   عرض شاشة الإدخال
+   عرض الشاشة
 ============================================================ */
 function renderInputScreen() {
   renderTabs();
@@ -332,7 +774,7 @@ function renderTabs() {
     tab.className = 'party-tab';
     if (idx === currentPartyIndex) tab.classList.add('active');
     if (isPartyComplete(contractData[def.key], def)) tab.classList.add('done');
-    tab.textContent = def.icon + ' ' + def.label;
+    tab.innerHTML = `<span class="tab-icon">${def.icon}</span>${def.label}`;
     tab.onclick = () => {
       currentPartyIndex = idx;
       renderInputScreen();
@@ -353,8 +795,9 @@ function updateProgress() {
   const done = PARTY_DEFS.filter(d => isPartyComplete(contractData[d.key], d)).length;
   const pct = Math.round((done / PARTIES_COUNT) * 100);
   document.getElementById('progressCircle').style.background =
-    `conic-gradient(#1e8e3e ${pct}%, #e0e0e0 ${pct}%)`;
+    `conic-gradient(var(--green-dark) ${pct}%, #e0e0e0 ${pct}%)`;
   document.getElementById('progressText').textContent = pct + '%';
+  document.getElementById('progressSubtext').textContent = `${done} من 5 أطراف مكتمل`;
 }
 
 function renderPartyForm() {
@@ -366,7 +809,7 @@ function renderPartyForm() {
 }
 
 /* ============================================================
-   بناء نموذج الطرف
+   بناء النموذج
 ============================================================ */
 function buildPartyForm(def, p) {
   const spouse = def.isSpouse;
@@ -381,12 +824,15 @@ function buildPartyForm(def, p) {
           <input type="checkbox" id="noWaliCheck" checked>
           <label for="noWaliCheck">لا يوجد ولي (Kein Wali)</label>
         </div>
-        <div class="wali-none-text">لا يوجد ولي (Kein Wali)</div>
+        <div class="wali-none-text">
+          ✓ لا يوجد ولي في هذا العقد<br>
+          <small style="font-weight: normal; font-size: 13px; color: var(--text-gray);">Kein Wali</small>
+        </div>
       </div>`;
   }
 
   let html = `<div class="form-grid">
-    <div class="section-title">📋 بيانات ${def.label}</div>
+    <div class="section-title">بيانات ${def.label}</div>
 
     <div class="field">
       <label>الاسم بالكامل بالألمانية <span class="req">*</span></label>
@@ -427,7 +873,7 @@ function buildPartyForm(def, p) {
       <input type="text" data-k="idNumber" value="${esc(p.idNumber)}">
     </div>
 
-    <div class="section-title">🏠 العنوان</div>
+    <div class="section-title">العنوان الحالي</div>
     <div class="address-sub">
       <div class="field">
         <label>رقم الشارع</label>
@@ -440,7 +886,7 @@ function buildPartyForm(def, p) {
     </div>
     <div class="address-sub2">
       <div class="field">
-        <label>الرقم البريدي</label>
+        <label>الرمز البريدي</label>
         <input type="text" data-k="postalCode" value="${esc(p.postalCode)}">
       </div>
       <div class="field">
@@ -452,7 +898,7 @@ function buildPartyForm(def, p) {
 
   if (spouse) {
     html += `
-      <div class="section-title">👩 بيانات الأم</div>
+      <div class="section-title">بيانات الأم</div>
       <div class="field">
         <label>اسم الأم بالألمانية <span class="req">*</span></label>
         <input type="text" data-k="motherNameDe" value="${esc(p.motherNameDe)}">
@@ -466,9 +912,9 @@ function buildPartyForm(def, p) {
 
   if (groom) {
     html += `
-      <div class="section-title">💰 المهر</div>
+      <div class="section-title">قيمة المهر</div>
       <div class="field full">
-        <label>قيمة المهر (€)</label>
+        <label>المهر باليورو (€)</label>
         <input type="number" data-k="dowry" value="${esc(p.dowry)}" placeholder="0">
       </div>
     `;
@@ -489,7 +935,6 @@ function buildPartyForm(def, p) {
 
 function attachFormHandlers(partyKey) {
   const party = contractData[partyKey];
-
   document.querySelectorAll('#partyFormWrap [data-k]').forEach(inp => {
     inp.addEventListener('input', () => {
       party[inp.dataset.k] = inp.value;
@@ -498,7 +943,6 @@ function attachFormHandlers(partyKey) {
       checkAllDone();
     });
   });
-
   const noWaliCheck = document.getElementById('noWaliCheck');
   if (noWaliCheck) {
     noWaliCheck.addEventListener('change', () => {
@@ -511,22 +955,17 @@ function attachFormHandlers(partyKey) {
   }
 }
 
-/* ============================================================
-   التحقق من اكتمال الجميع
-============================================================ */
 function checkAllDone() {
   const allDone = PARTY_DEFS.every(d => isPartyComplete(contractData[d.key], d));
   document.getElementById('submitArea').classList.toggle('hidden', !allDone);
 }
 
 /* ============================================================
-   إرسال العقد كاملاً عبر EmailJS
+   الإرسال
 ============================================================ */
 async function submitAllParties() {
-  // تحقق نهائي
   for (const def of PARTY_DEFS) {
-    const p = contractData[def.key];
-    if (!isPartyComplete(p, def)) {
+    if (!isPartyComplete(contractData[def.key], def)) {
       toast('بيانات ' + def.label + ' ناقصة', 'error');
       currentPartyIndex = PARTY_DEFS.indexOf(def);
       renderInputScreen();
@@ -538,49 +977,29 @@ async function submitAllParties() {
   btn.disabled = true;
   btn.textContent = '⏳ جارٍ الإرسال...';
 
-  const g = contractData.groom;
-  const b = contractData.bride;
-  const w = contractData.wali;
-  const w1 = contractData.witness1;
-  const w2 = contractData.witness2;
-
+  const g = contractData.groom, b = contractData.bride, w = contractData.wali;
+  const w1 = contractData.witness1, w2 = contractData.witness2;
   const idTypeAr = t => t === 'passport' ? 'جواز سفر' : 'بطاقة هوية';
 
   const payload = {
     to_email: ADMIN_EMAIL,
     contract_code: currentContractCode,
     sent_at: new Date().toLocaleString('de-DE'),
-
-    /* الزوج */
-    groom_name_de: g.nameDe || '—',
-    groom_name_ar: g.nameAr || '—',
+    groom_name_de: g.nameDe || '—', groom_name_ar: g.nameAr || '—',
     groom_birth: getBirthDate(g),
-    groom_birth_region: g.birthRegion || '—',
-    groom_birth_country: g.birthCountry || '—',
-    groom_id_type: idTypeAr(g.idType),
-    groom_id_number: g.idNumber || '—',
+    groom_birth_region: g.birthRegion || '—', groom_birth_country: g.birthCountry || '—',
+    groom_id_type: idTypeAr(g.idType), groom_id_number: g.idNumber || '—',
     groom_address: `${g.addressStreet||''} ${g.addressNumber||''}`.trim() || '—',
-    groom_postal: g.postalCode || '—',
-    groom_city: g.city || '—',
-    groom_mother_de: g.motherNameDe || '—',
-    groom_mother_ar: g.motherNameAr || '—',
+    groom_postal: g.postalCode || '—', groom_city: g.city || '—',
+    groom_mother_de: g.motherNameDe || '—', groom_mother_ar: g.motherNameAr || '—',
     groom_dowry: g.dowry || '—',
-
-    /* الزوجة */
-    bride_name_de: b.nameDe || '—',
-    bride_name_ar: b.nameAr || '—',
+    bride_name_de: b.nameDe || '—', bride_name_ar: b.nameAr || '—',
     bride_birth: getBirthDate(b),
-    bride_birth_region: b.birthRegion || '—',
-    bride_birth_country: b.birthCountry || '—',
-    bride_id_type: idTypeAr(b.idType),
-    bride_id_number: b.idNumber || '—',
+    bride_birth_region: b.birthRegion || '—', bride_birth_country: b.birthCountry || '—',
+    bride_id_type: idTypeAr(b.idType), bride_id_number: b.idNumber || '—',
     bride_address: `${b.addressStreet||''} ${b.addressNumber||''}`.trim() || '—',
-    bride_postal: b.postalCode || '—',
-    bride_city: b.city || '—',
-    bride_mother_de: b.motherNameDe || '—',
-    bride_mother_ar: b.motherNameAr || '—',
-
-    /* الولي */
+    bride_postal: b.postalCode || '—', bride_city: b.city || '—',
+    bride_mother_de: b.motherNameDe || '—', bride_mother_ar: b.motherNameAr || '—',
     wali_status: w.noWali ? 'لا يوجد ولي (Kein Wali)' : 'يوجد ولي',
     wali_name_de: w.noWali ? '—' : (w.nameDe || '—'),
     wali_name_ar: w.noWali ? '—' : (w.nameAr || '—'),
@@ -592,76 +1011,60 @@ async function submitAllParties() {
     wali_address: w.noWali ? '—' : `${w.addressStreet||''} ${w.addressNumber||''}`.trim() || '—',
     wali_postal: w.noWali ? '—' : (w.postalCode || '—'),
     wali_city: w.noWali ? '—' : (w.city || '—'),
-
-    /* الشاهد الأول */
-    w1_name_de: w1.nameDe || '—',
-    w1_name_ar: w1.nameAr || '—',
+    w1_name_de: w1.nameDe || '—', w1_name_ar: w1.nameAr || '—',
     w1_birth: getBirthDate(w1),
-    w1_birth_region: w1.birthRegion || '—',
-    w1_birth_country: w1.birthCountry || '—',
-    w1_id_type: idTypeAr(w1.idType),
-    w1_id_number: w1.idNumber || '—',
+    w1_birth_region: w1.birthRegion || '—', w1_birth_country: w1.birthCountry || '—',
+    w1_id_type: idTypeAr(w1.idType), w1_id_number: w1.idNumber || '—',
     w1_address: `${w1.addressStreet||''} ${w1.addressNumber||''}`.trim() || '—',
-    w1_postal: w1.postalCode || '—',
-    w1_city: w1.city || '—',
-
-    /* الشاهد الثاني */
-    w2_name_de: w2.nameDe || '—',
-    w2_name_ar: w2.nameAr || '—',
+    w1_postal: w1.postalCode || '—', w1_city: w1.city || '—',
+    w2_name_de: w2.nameDe || '—', w2_name_ar: w2.nameAr || '—',
     w2_birth: getBirthDate(w2),
-    w2_birth_region: w2.birthRegion || '—',
-    w2_birth_country: w2.birthCountry || '—',
-    w2_id_type: idTypeAr(w2.idType),
-    w2_id_number: w2.idNumber || '—',
+    w2_birth_region: w2.birthRegion || '—', w2_birth_country: w2.birthCountry || '—',
+    w2_id_type: idTypeAr(w2.idType), w2_id_number: w2.idNumber || '—',
     w2_address: `${w2.addressStreet||''} ${w2.addressNumber||''}`.trim() || '—',
-    w2_postal: w2.postalCode || '—',
-    w2_city: w2.city || '—',
+    w2_postal: w2.postalCode || '—', w2_city: w2.city || '—',
   };
 
   try {
     await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, payload);
     toast('✓ تم إرسال العقد بنجاح', 'success');
-
     document.getElementById('inputScreen').innerHTML = `
-      <div class="success-box" style="padding:60px 20px;">
-        ✅ تم إرسال العقد بنجاح
-        <small>رقم العقد: ${currentContractCode}</small>
+      <div class="success-box">
+        <span class="big-check">✓</span>
+        تم إرسال العقد بنجاح
+        <small>رقم العقد: <strong>${currentContractCode}</strong></small>
         <small>تم إرسال البيانات إلى المركز</small>
         <div style="margin-top:25px;">
-          <button class="btn gray small" onclick="location.reload()">عقد جديد</button>
+          <button class="btn gold small" onclick="location.reload()">تسجيل عقد جديد</button>
         </div>
       </div>`;
   } catch (err) {
     console.error('EmailJS Error:', err);
-    toast('فشل الإرسال: ' + (err.text || err.message || 'خطأ غير معروف'), 'error');
+    toast('فشل الإرسال، حاول مجدداً', 'error');
     btn.disabled = false;
-    btn.textContent = '✅ إرسال العقد كاملاً';
+    btn.textContent = '📨 إرسال العقد إلى المركز';
   }
 }
 
 /* ============================================================
-   لوحة الإدارة المبسطة
+   الإدارة
 ============================================================ */
 function openAdminModal() {
   document.getElementById('pwModal').classList.remove('hidden');
   document.getElementById('pwInput').value = '';
   setTimeout(() => document.getElementById('pwInput').focus(), 100);
 }
-function closeModal() {
-  document.getElementById('pwModal').classList.add('hidden');
-}
+function closeModal() { document.getElementById('pwModal').classList.add('hidden'); }
 function checkPw() {
-  const pw = document.getElementById('pwInput').value;
-  if (pw !== ADMIN_PASSWORD) return toast('كلمة المرور خاطئة', 'error');
+  if (document.getElementById('pwInput').value !== ADMIN_PASSWORD) {
+    return toast('كلمة المرور خاطئة', 'error');
+  }
   closeModal();
   toast('مرحباً بك في لوحة الإدارة', 'success');
-  setTimeout(() => {
-    alert('لوحة الإدارة هنا يمكنك إضافة ميزات:\n- عرض العقود المرسلة\n- طباعة العقد\n- إدارة الأكواد\n\n(يمكن تطويرها لاحقاً)');
-  }, 500);
 }
 
 /* ============================================================
-   ربط الأحداث
+   الأحداث
 ============================================================ */
 document.getElementById('contractCodeInput').addEventListener('keydown', e => {
   if (e.key === 'Enter') verifyCode();
