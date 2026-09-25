@@ -13,6 +13,7 @@
     --green-light: #40916c;
     --gold: #d4a944;
     --gold-light: #e9c46a;
+    --red: #a8332a;
     --cream: #f8f7f2;
     --text-dark: #2d2d2d;
     --text-gray: #6b6b6b;
@@ -33,10 +34,37 @@
     color: #fff;
     padding: 6px 20px;
     font-size: 12px;
-    text-align: center;
-    letter-spacing: 0.5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
   }
-  .topbar a { color: var(--gold-light); text-decoration: none; }
+  .topbar-text { letter-spacing: 0.5px; }
+  .lang-switcher {
+    display: flex;
+    gap: 4px;
+    background: rgba(0,0,0,0.2);
+    padding: 3px;
+    border-radius: 20px;
+  }
+  .lang-btn {
+    background: transparent;
+    color: #fff;
+    border: none;
+    padding: 4px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 600;
+    transition: 0.2s;
+    font-family: inherit;
+  }
+  .lang-btn:hover { background: rgba(255,255,255,0.1); }
+  .lang-btn.active {
+    background: var(--gold);
+    color: var(--green-dark);
+  }
 
   /* ============ الهيدر ============ */
   header {
@@ -56,17 +84,22 @@
     gap: 15px;
   }
   .brand-logo {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
-    background: var(--green-dark);
+    background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
     color: var(--gold);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 30px;
     box-shadow: 0 4px 10px rgba(26,77,58,0.3);
     border: 3px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+  }
+  .brand-logo svg {
+    width: 45px;
+    height: 45px;
   }
   .brand-text h1 {
     font-family: 'Amiri', serif;
@@ -76,9 +109,9 @@
     line-height: 1.2;
   }
   .brand-text p {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--text-gray);
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
   }
   .header-info {
     font-size: 13px;
@@ -88,7 +121,7 @@
   }
   .header-info strong { color: var(--green-dark); }
 
-  /* ============ القسم الرئيسي ============ */
+  /* ============ الهيرو ============ */
   .hero {
     background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
     color: #fff;
@@ -114,17 +147,8 @@
     margin-bottom: 15px;
     font-weight: 700;
   }
-  .hero h2 {
-    font-size: 28px;
-    margin-bottom: 10px;
-    font-weight: 700;
-  }
-  .hero p {
-    font-size: 15px;
-    opacity: 0.9;
-    max-width: 500px;
-    margin: 0 auto;
-  }
+  .hero h2 { font-size: 28px; margin-bottom: 10px; font-weight: 700; }
+  .hero p { font-size: 15px; opacity: 0.9; max-width: 500px; margin: 0 auto; }
   .hero .ornament {
     width: 80px;
     height: 3px;
@@ -147,96 +171,94 @@
   }
 
   /* ============ شاشة التحقق ============ */
-  #verifyScreen {
-    text-align: center;
-    padding: 20px 10px 30px;
-  }
+  #verifyScreen { text-align: center; padding: 20px 10px 30px; }
   #verifyScreen .icon-circle {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
+    width: 80px; height: 80px; border-radius: 50%;
     background: linear-gradient(135deg, var(--green-dark), var(--green-light));
     color: var(--gold);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 36px;
-    margin-bottom: 18px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 36px; margin-bottom: 18px;
     box-shadow: 0 8px 20px rgba(26,77,58,0.25);
   }
-  #verifyScreen h2 {
-    color: var(--green-dark);
-    margin-bottom: 8px;
-    font-size: 22px;
-    font-weight: 700;
-  }
-  #verifyScreen .subtitle {
-    color: var(--text-gray);
-    font-size: 14px;
-    margin-bottom: 25px;
+  #verifyScreen h2 { color: var(--green-dark); margin-bottom: 8px; font-size: 22px; font-weight: 700; }
+  #verifyScreen .subtitle { color: var(--text-gray); font-size: 14px; margin-bottom: 25px; }
+  .code-input-wrap {
+    display: flex; gap: 8px; justify-content: center; align-items: center;
+    flex-wrap: wrap; margin-bottom: 10px;
   }
   #verifyScreen input {
-    width: 240px;
-    padding: 14px 18px;
-    font-size: 20px;
-    text-align: center;
-    letter-spacing: 6px;
-    border: 2px solid var(--border);
-    border-radius: 10px;
-    outline: none;
-    text-transform: uppercase;
+    width: 200px; padding: 14px 18px; font-size: 20px;
+    text-align: center; letter-spacing: 6px;
+    border: 2px solid var(--border); border-radius: 10px;
+    outline: none; text-transform: uppercase;
+    font-weight: 700; color: var(--green-dark);
+    transition: 0.2s; background: var(--cream);
     font-family: 'Tajawal', monospace;
-    font-weight: 700;
-    color: var(--green-dark);
-    transition: 0.2s;
-    background: var(--cream);
   }
   #verifyScreen input:focus {
-    border-color: var(--green-dark);
-    background: #fff;
+    border-color: var(--green-dark); background: #fff;
     box-shadow: 0 0 0 4px rgba(26,77,58,0.1);
   }
 
   /* ============ الأزرار ============ */
   .btn {
-    background: var(--green-dark);
-    color: #fff;
-    border: none;
-    padding: 13px 30px;
-    border-radius: 8px;
-    font-size: 15px;
-    cursor: pointer;
-    margin: 8px 4px;
-    transition: 0.25s;
-    font-family: inherit;
-    font-weight: 700;
+    background: var(--green-dark); color: #fff;
+    border: none; padding: 13px 30px; border-radius: 8px;
+    font-size: 15px; cursor: pointer; margin: 6px 4px;
+    transition: 0.25s; font-family: inherit; font-weight: 700;
     letter-spacing: 0.5px;
   }
   .btn:hover {
-    background: var(--green-mid);
-    transform: translateY(-2px);
+    background: var(--green-mid); transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(26,77,58,0.3);
   }
   .btn:disabled {
-    background: #999;
-    cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
+    background: #999 !important; cursor: not-allowed;
+    transform: none !important; box-shadow: none !important;
   }
-  .btn.gold {
-    background: var(--gold);
-    color: var(--green-dark);
-  }
+  .btn.gold { background: var(--gold); color: var(--green-dark); }
   .btn.gold:hover { background: var(--gold-light); }
-  .btn.green {
+  .btn.red { background: var(--red); }
+  .btn.red:hover { background: #c0392b; }
+  .btn.green { background: var(--green-dark); }
+  .btn.gray { background: #999; }
+  .btn.small { padding: 8px 16px; font-size: 13px; }
+  .btn.tiny { padding: 5px 12px; font-size: 12px; }
+
+  /* زر الحفظ الكبير */
+  .save-btn-wrap {
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 2px dashed var(--border);
+  }
+  .save-btn {
+    padding: 14px 45px;
+    font-size: 16px;
+    border-radius: 30px;
+    font-weight: 700;
+    transition: 0.3s;
+  }
+  .save-btn.incomplete {
+    background: var(--red);
+    color: #fff;
+  }
+  .save-btn.incomplete:hover {
+    background: #c0392b;
+    box-shadow: 0 6px 20px rgba(168,51,42,0.4);
+  }
+  .save-btn.complete {
     background: var(--green-dark);
+    color: #fff;
   }
-  .btn.gray {
-    background: #999;
+  .save-btn.complete:hover {
+    background: var(--green-light);
+    box-shadow: 0 6px 20px rgba(26,77,58,0.4);
   }
-  .btn.small {
-    padding: 7px 14px;
+  .save-hint {
     font-size: 12px;
+    color: var(--text-gray);
+    margin-top: 8px;
   }
 
   /* ============ تبويبات الأطراف ============ */
@@ -248,44 +270,27 @@
   }
   .party-tab {
     padding: 12px 6px;
-    border: 2px solid var(--border);
-    border-radius: 10px;
-    background: #fafaf7;
-    cursor: pointer;
-    font-size: 13px;
-    transition: 0.2s;
-    font-weight: 600;
-    color: var(--text-gray);
-    text-align: center;
-    position: relative;
+    border: 2px solid var(--border); border-radius: 10px;
+    background: #fafaf7; cursor: pointer; font-size: 13px;
+    transition: 0.2s; font-weight: 600; color: var(--text-gray);
+    text-align: center; position: relative;
   }
   .party-tab .tab-icon { font-size: 18px; display: block; margin-bottom: 3px; }
   .party-tab:hover { border-color: var(--green-mid); }
   .party-tab.active {
-    background: var(--green-dark);
-    color: #fff;
+    background: var(--green-dark); color: #fff;
     border-color: var(--green-dark);
     box-shadow: 0 4px 12px rgba(26,77,58,0.25);
   }
   .party-tab.done {
-    background: #e8f3ed;
-    border-color: var(--green-light);
+    background: #e8f3ed; border-color: var(--green-light);
     color: var(--green-dark);
   }
   .party-tab.done::after {
-    content: '✓';
-    position: absolute;
-    top: 4px;
-    left: 6px;
-    background: var(--green-dark);
-    color: #fff;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    font-size: 11px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    content: '✓'; position: absolute; top: 4px; left: 6px;
+    background: var(--green-dark); color: #fff;
+    width: 18px; height: 18px; border-radius: 50%;
+    font-size: 11px; display: flex; align-items: center; justify-content: center;
     font-weight: bold;
   }
   .party-tab.active.done { background: var(--green-dark); color: #fff; }
@@ -293,76 +298,44 @@
 
   /* ============ دائرة التقدم ============ */
   .progress-section {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 15px 20px;
-    background: var(--cream);
-    border-radius: 12px;
-    margin-bottom: 22px;
+    display: flex; align-items: center; gap: 20px;
+    padding: 15px 20px; background: var(--cream);
+    border-radius: 12px; margin-bottom: 22px;
     border: 1px solid var(--border);
   }
   .progress-circle {
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;
+    width: 75px; height: 75px; border-radius: 50%;
     background: conic-gradient(var(--green-dark) 0%, #e0e0e0 0%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; flex-shrink: 0;
   }
   .progress-circle::before {
-    content: '';
-    width: 58px;
-    height: 58px;
-    background: #fff;
-    border-radius: 50%;
-    position: absolute;
+    content: ''; width: 58px; height: 58px;
+    background: #fff; border-radius: 50%; position: absolute;
   }
   .progress-circle span {
-    position: relative;
-    font-size: 16px;
-    font-weight: 900;
-    color: var(--green-dark);
+    position: relative; font-size: 16px;
+    font-weight: 900; color: var(--green-dark);
   }
-  .progress-text h4 {
-    font-size: 15px;
-    color: var(--green-dark);
-    margin-bottom: 3px;
-  }
-  .progress-text p {
-    font-size: 12px;
-    color: var(--text-gray);
-  }
+  .progress-text h4 { font-size: 15px; color: var(--green-dark); margin-bottom: 3px; }
+  .progress-text p { font-size: 12px; color: var(--text-gray); }
 
   /* ============ النموذج ============ */
   .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .form-grid .full { grid-column: 1 / -1; }
   .field label {
-    display: block;
-    font-size: 13px;
-    margin-bottom: 5px;
-    color: var(--text-dark);
-    font-weight: 600;
+    display: block; font-size: 13px; margin-bottom: 5px;
+    color: var(--text-dark); font-weight: 600;
   }
   .field label .req { color: #c0392b; }
   .field input, .field select {
-    width: 100%;
-    padding: 11px 13px;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    font-size: 14px;
-    outline: none;
-    transition: 0.2s;
-    font-family: inherit;
-    background: #fafaf7;
-    color: var(--text-dark);
+    width: 100%; padding: 11px 13px;
+    border: 1.5px solid var(--border); border-radius: 8px;
+    font-size: 14px; outline: none; transition: 0.2s;
+    font-family: inherit; background: #fafaf7; color: var(--text-dark);
   }
   .field input:focus, .field select:focus {
-    border-color: var(--green-dark);
-    background: #fff;
+    border-color: var(--green-dark); background: #fff;
     box-shadow: 0 0 0 3px rgba(26,77,58,0.08);
   }
   .date-inputs { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
@@ -370,129 +343,94 @@
   .address-sub { display: grid; grid-template-columns: 1fr 2fr; gap: 8px; grid-column: 1 / -1; }
   .address-sub2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; grid-column: 1 / -1; }
   .section-title {
-    grid-column: 1 / -1;
-    font-size: 14px;
-    color: var(--green-dark);
+    grid-column: 1 / -1; font-size: 14px; color: var(--green-dark);
     border-bottom: 2px solid var(--gold);
-    padding-bottom: 6px;
-    margin-top: 12px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    padding-bottom: 6px; margin-top: 12px; font-weight: 700;
+    display: flex; align-items: center; gap: 8px;
   }
   .section-title::before {
-    content: '';
-    width: 4px;
-    height: 16px;
-    background: var(--gold);
-    border-radius: 2px;
+    content: ''; width: 4px; height: 16px;
+    background: var(--gold); border-radius: 2px;
   }
 
-  /* ============ خيار لا يوجد ولي ============ */
-  .wali-note {
+  /* ============ ولي ============ */
+  .wali-options {
     grid-column: 1 / -1;
-    padding: 14px;
-    background: #fffbf0;
+    display: flex; flex-direction: column; gap: 10px;
+    padding: 16px; background: #fffbf0;
     border: 2px dashed var(--gold);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    border-radius: 12px;
+    margin-bottom: 8px;
   }
-  .wali-note input[type="checkbox"] {
-    width: 22px;
-    height: 22px;
-    cursor: pointer;
-    accent-color: var(--green-dark);
+  .wali-option-item {
+    display: flex; align-items: center; gap: 10px;
+    cursor: pointer; padding: 6px; border-radius: 8px;
+    transition: 0.2s;
   }
-  .wali-note label {
-    font-weight: 700;
-    color: #8b6f1e;
-    cursor: pointer;
-    margin: 0;
-    font-size: 14px;
+  .wali-option-item:hover { background: rgba(212,169,68,0.1); }
+  .wali-option-item input[type="checkbox"] {
+    width: 22px; height: 22px; cursor: pointer;
+    accent-color: var(--green-dark); flex-shrink: 0;
   }
-  .wali-none-text {
-    grid-column: 1 / -1;
-    padding: 25px;
+  .wali-option-item label {
+    font-weight: 700; color: #8b6f1e;
+    cursor: pointer; margin: 0; font-size: 14px;
+  }
+  .wali-info-box {
+    grid-column: 1 / -1; padding: 25px;
     background: linear-gradient(135deg, #e8f3ed, #f0f9f3);
     border: 2px solid var(--green-light);
-    border-radius: 10px;
-    text-align: center;
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--green-dark);
+    border-radius: 10px; text-align: center;
+    font-size: 17px; font-weight: 700; color: var(--green-dark);
+  }
+  .wali-info-box small {
+    display: block; font-weight: normal;
+    font-size: 13px; color: var(--text-gray); margin-top: 5px;
   }
 
   /* ============ صندوق النجاح ============ */
   .success-box {
-    text-align: center;
-    padding: 50px 20px;
+    text-align: center; padding: 50px 20px;
     background: linear-gradient(135deg, #e8f3ed, #f0f9f3);
-    border-radius: 12px;
-    color: var(--green-dark);
-    font-size: 18px;
-    font-weight: 700;
+    border-radius: 12px; color: var(--green-dark);
+    font-size: 18px; font-weight: 700;
     border: 2px solid var(--green-light);
   }
-  .success-box .big-check {
-    font-size: 60px;
-    margin-bottom: 15px;
-    display: block;
-  }
+  .success-box .big-check { font-size: 60px; margin-bottom: 15px; display: block; }
   .success-box small {
-    display: block;
-    color: var(--text-gray);
-    font-size: 13px;
-    margin-top: 10px;
-    font-weight: normal;
+    display: block; color: var(--text-gray);
+    font-size: 13px; margin-top: 10px; font-weight: normal;
   }
 
   .hidden { display: none !important; }
 
   /* ============ رابط الإدارة ============ */
   .admin-link {
-    text-align: center;
-    margin-top: 25px;
-    padding-top: 20px;
+    text-align: center; margin-top: 25px; padding-top: 20px;
     border-top: 1px dashed var(--border);
-    font-size: 11px;
-    color: #bbb;
-    cursor: pointer;
-    user-select: none;
-    transition: 0.2s;
+    font-size: 11px; color: #bbb;
+    cursor: pointer; user-select: none; transition: 0.2s;
   }
   .admin-link:hover { color: var(--green-dark); }
 
   /* ============ Footer ============ */
   footer {
-    background: var(--green-dark);
-    color: #c9d9d2;
-    text-align: center;
-    padding: 20px 15px;
-    font-size: 12px;
-    line-height: 1.8;
+    background: var(--green-dark); color: #c9d9d2;
+    text-align: center; padding: 20px 15px;
+    font-size: 12px; line-height: 1.8;
   }
   footer .footer-gold { color: var(--gold-light); font-weight: 700; }
   footer a { color: var(--gold-light); text-decoration: none; }
 
   /* ============ Toast ============ */
   .toast {
-    position: fixed;
-    top: 20px;
-    left: 50%;
+    position: fixed; top: 20px; left: 50%;
     transform: translateX(-50%);
-    background: var(--green-dark);
-    color: #fff;
-    padding: 13px 25px;
-    border-radius: 10px;
-    z-index: 200;
-    font-size: 14px;
+    background: var(--green-dark); color: #fff;
+    padding: 13px 25px; border-radius: 10px;
+    z-index: 9999; font-size: 14px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-    max-width: 90%;
-    text-align: center;
-    font-weight: 600;
+    max-width: 90%; text-align: center; font-weight: 600;
     border-right: 4px solid var(--gold);
   }
   .toast.error { background: #a8332a; border-right-color: #f0a500; }
@@ -500,46 +438,68 @@
 
   /* ============ Modal ============ */
   .modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 100;
-    padding: 15px;
+    position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 1000; padding: 15px;
   }
   .modal {
-    background: #fff;
-    padding: 28px 24px;
-    border-radius: 14px;
-    width: 100%;
-    max-width: 380px;
-    text-align: center;
+    background: #fff; padding: 28px 24px; border-radius: 14px;
+    width: 100%; max-width: 420px; text-align: center;
     box-shadow: 0 20px 60px rgba(0,0,0,0.3);
   }
-  .modal h3 {
-    color: var(--green-dark);
-    margin-bottom: 15px;
-    font-size: 18px;
-  }
+  .modal h3 { color: var(--green-dark); margin-bottom: 15px; font-size: 18px; }
   .modal input {
-    width: 100%;
-    padding: 13px;
-    border: 2px solid var(--border);
-    border-radius: 8px;
-    text-align: center;
-    font-size: 18px;
-    letter-spacing: 4px;
-    margin-bottom: 15px;
-    outline: none;
-    background: var(--cream);
-    transition: 0.2s;
+    width: 100%; padding: 13px; border: 2px solid var(--border);
+    border-radius: 8px; text-align: center; font-size: 18px;
+    letter-spacing: 4px; margin-bottom: 15px; outline: none;
+    background: var(--cream); transition: 0.2s;
+    font-family: inherit;
   }
-  .modal input:focus {
-    border-color: var(--green-dark);
-    background: #fff;
+  .modal input:focus { border-color: var(--green-dark); background: #fff; }
+  .modal p { color: var(--text-gray); font-size: 13px; margin-bottom: 15px; }
+
+  /* ============ لوحة الإدارة ============ */
+  .admin-panel {
+    background: var(--cream); padding: 20px;
+    border-radius: 12px; border: 1px solid var(--border);
   }
+  .admin-section {
+    background: #fff; padding: 18px;
+    border-radius: 10px; margin-bottom: 15px;
+    border: 1px solid var(--border);
+  }
+  .admin-section h3 {
+    color: var(--green-dark); font-size: 15px;
+    margin-bottom: 12px; display: flex;
+    align-items: center; gap: 8px;
+  }
+  .admin-section h3::before {
+    content: ''; width: 4px; height: 16px;
+    background: var(--gold); border-radius: 2px;
+  }
+  .code-list { display: flex; flex-direction: column; gap: 8px; }
+  .code-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 12px; background: var(--cream);
+    border-radius: 8px; border-right: 4px solid var(--green-dark);
+    flex-wrap: wrap;
+  }
+  .code-item.done { border-right-color: var(--green-light); }
+  .code-item .code-val {
+    font-family: monospace; font-size: 16px;
+    font-weight: 700; letter-spacing: 2px;
+    color: var(--green-dark); min-width: 80px;
+  }
+  .code-item .party-name {
+    flex: 1; font-size: 13px; color: var(--text-dark);
+    min-width: 100px;
+  }
+  .code-item .status-badge {
+    padding: 3px 10px; border-radius: 12px;
+    font-size: 11px; font-weight: 700;
+  }
+  .status-badge.done { background: #d4f4dd; color: var(--green-dark); }
+  .status-badge.pending { background: #fff0d4; color: #b8860b; }
 
   /* ============ Responsive ============ */
   @media (max-width: 720px) {
@@ -548,7 +508,8 @@
     .address-sub, .address-sub2 { grid-template-columns: 1fr; }
     header { padding: 14px 18px; }
     .brand-text h1 { font-size: 18px; }
-    .brand-logo { width: 50px; height: 50px; font-size: 24px; }
+    .brand-logo { width: 55px; height: 55px; }
+    .brand-logo svg { width: 36px; height: 36px; }
     .hero h2 { font-size: 22px; }
     .hero .bismillah { font-size: 22px; }
     .container { padding: 20px; margin: -20px 12px 20px; }
@@ -565,20 +526,35 @@
 
 <!-- الشريط العلوي -->
 <div class="topbar">
-  🕌 Arresalah e.V. — Berlin · <span style="color: var(--gold-light);">Die Botschaft des Friedens</span>
+  <div class="topbar-text">🕌 Arresalah e.V. — Berlin</div>
+  <div class="lang-switcher">
+    <button class="lang-btn active" data-lang="ar" onclick="setLanguage('ar')">عربي</button>
+    <button class="lang-btn" data-lang="de" onclick="setLanguage('de')">DE</button>
+    <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+  </div>
 </div>
 
 <!-- الهيدر -->
 <header>
   <div class="brand">
-    <div class="brand-logo">☪</div>
+    <div class="brand-logo">
+      <!-- شعار مقارب لشعار Arresalah -->
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <!-- كتاب مفتوح -->
+        <path d="M 50 30 Q 30 25 15 30 L 15 70 Q 30 65 50 70 Z" fill="#d4a944" opacity="0.9"/>
+        <path d="M 50 30 Q 70 25 85 30 L 85 70 Q 70 65 50 70 Z" fill="#e9c46a" opacity="0.9"/>
+        <!-- الهلال والنجمة -->
+        <path d="M 55 20 A 12 12 0 1 0 55 44 A 9 9 0 1 1 55 20 Z" fill="#d4a944"/>
+        <path d="M 68 25 L 70 30 L 75 30 L 71 33 L 72 38 L 68 35 L 64 38 L 65 33 L 61 30 L 66 30 Z" fill="#d4a944"/>
+      </svg>
+    </div>
     <div class="brand-text">
-      <h1>Arresalah Zentrum</h1>
-      <p>ISLAMISCHES ZENTRUM BERLIN</p>
+      <h1 data-i18n="brandName">Arresalah Zentrum</h1>
+      <p data-i18n="brandSub">ISLAMISCHES ZENTRUM BERLIN</p>
     </div>
   </div>
   <div class="header-info">
-    <strong>📞 Kontakt:</strong> +49 30 XXXXXXX<br>
+    <strong>📞</strong> +49 30 XXXXXXX<br>
     <strong>📍</strong> Turnstraße 83, 10551 Berlin
   </div>
 </header>
@@ -586,9 +562,9 @@
 <!-- الهيرو -->
 <section class="hero">
   <div class="hero-content">
-    <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
-    <h2>نظام تسجيل بيانات عقد الزواج</h2>
-    <p>منصة إلكترونية لتسجيل بيانات أطراف العقد بسهولة ودقة</p>
+    <div class="bismillah" data-i18n="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+    <h2 data-i18n="heroTitle">نظام تسجيل بيانات عقد الزواج</h2>
+    <p data-i18n="heroSub">منصة إلكترونية لتسجيل بيانات أطراف العقد بسهولة ودقة</p>
     <div class="ornament"></div>
   </div>
 </section>
@@ -599,45 +575,87 @@
   <!-- شاشة التحقق -->
   <div id="verifyScreen">
     <div class="icon-circle">🔐</div>
-    <h2>التحقق من رقم العقد</h2>
-    <p class="subtitle">أدخل رقم العقد للبدء في تعبئة بيانات الأطراف</p>
-    <input type="text" id="contractCodeInput" placeholder="XXXXXX" maxlength="10">
+    <h2 data-i18n="verifyTitle">التحقق من رقم العقد</h2>
+    <p class="subtitle" data-i18n="verifySub">أدخل رقم العقد للبدء في تعبئة بيانات الأطراف</p>
+    <div class="code-input-wrap">
+      <input type="text" id="contractCodeInput" placeholder="XXXXXX" maxlength="6">
+      <button class="btn gold small" onclick="generateCode()" title="توليد كود عشوائي">🎲</button>
+    </div>
     <br>
-    <button class="btn gold" onclick="verifyCode()" style="margin-top:18px;">
-      متابعة ←
-    </button>
+    <button class="btn gold" onclick="verifyCode()" data-i18n="verifyBtn">متابعة ←</button>
+  </div>
+
+  <!-- شاشة اختيار الأطراف -->
+  <div id="roleScreen" class="hidden">
+    <div class="progress-section">
+      <div class="progress-circle" id="progressCircleRole">
+        <span id="progressTextRole">0%</span>
+      </div>
+      <div class="progress-text">
+        <h4 data-i18n="progressTitle">اكتمال بيانات العقد</h4>
+        <p id="progressSubtextRole">0 من 5 أطراف مكتمل</p>
+      </div>
+    </div>
+
+    <h2 style="text-align:center; color:var(--green-dark); margin-bottom:10px; font-size:18px;" data-i18n="chooseRole">
+      اختر الطرف لتعبئة بياناته
+    </h2>
+    <p style="text-align:center; color:var(--text-gray); font-size:13px; margin-bottom:18px;" data-i18n="chooseRoleSub">
+      اضغط على أي طرف لبدء التعبئة
+    </p>
+
+    <div class="party-tabs" id="rolePicker"></div>
+
+    <div id="sendArea" class="hidden" style="text-align:center; margin-top:25px; padding-top:20px; border-top:2px dashed var(--border);">
+      <p style="color:var(--green-dark); font-weight:700; margin-bottom:12px; font-size:16px;">
+        ✅ <span data-i18n="allComplete">اكتملت بيانات جميع الأطراف</span>
+      </p>
+      <button class="btn gold" onclick="submitAllParties()" style="font-size:16px; padding:15px 40px;">
+        📨 <span data-i18n="sendContract">إرسال العقد إلى المركز</span>
+      </button>
+    </div>
   </div>
 
   <!-- شاشة الإدخال -->
   <div id="inputScreen" class="hidden">
-
-    <div class="progress-section">
-      <div class="progress-circle" id="progressCircle">
-        <span id="progressText">0%</span>
-      </div>
-      <div class="progress-text">
-        <h4>اكتمال بيانات العقد</h4>
-        <p id="progressSubtext">0 من 5 أطراف مكتمل</p>
-      </div>
-    </div>
-
-    <div class="party-tabs" id="partyTabs"></div>
-
     <div id="partyFormWrap"></div>
+  </div>
 
-    <div id="submitArea" class="hidden" style="text-align:center; margin-top:25px; padding-top:20px; border-top:2px dashed var(--border);">
-      <p style="color: var(--green-dark); font-weight: 700; margin-bottom:12px;">
-        ✅ اكتملت بيانات جميع الأطراف
-      </p>
-      <button class="btn gold" id="submitAllBtn" onclick="submitAllParties()" style="font-size: 16px; padding: 15px 40px;">
-        📨 إرسال العقد إلى المركز
-      </button>
-      <br>
-      <button class="btn gray small" onclick="backToVerify()">← إلغاء</button>
+  <!-- لوحة الإدارة -->
+  <div id="adminPanel" class="hidden">
+    <h2 style="color:var(--green-dark); margin-bottom:15px; text-align:center; font-size:20px;">
+      🛠 <span data-i18n="adminPanel">لوحة الإدارة</span>
+    </h2>
+
+    <div class="admin-panel">
+      <div class="admin-section">
+        <h3 data-i18n="contractCodes">أكواد العقد الحالي</h3>
+        <p style="font-size:12px; color:var(--text-gray); margin-bottom:10px;">
+          <span data-i18n="currentCodeLabel">كود العقد:</span>
+          <strong id="adminContractCode" style="color:var(--green-dark); letter-spacing:2px;"></strong>
+        </p>
+        <div class="code-list" id="adminCodeList"></div>
+      </div>
+
+      <div class="admin-section" style="border: 2px solid #f0a500; background: #fffbf0;">
+        <h3 style="color:#b8860b;" data-i18n="dangerZone">⚠️ منطقة الخطر</h3>
+        <p style="font-size:12px; color:var(--text-gray); margin-bottom:10px;" data-i18n="dangerDesc">
+          مسح جميع البيانات المحفوظة محلياً (ما عدا الأكواد الخمسة)
+        </p>
+        <button class="btn red small" onclick="confirmClearStorage()">
+          🗑 <span data-i18n="clearData">مسح البيانات المؤقتة</span>
+        </button>
+      </div>
+
+      <div style="text-align:center; margin-top:20px;">
+        <button class="btn gray small" onclick="closeAdmin()">
+          ← <span data-i18n="backToMain">رجوع للصفحة الرئيسية</span>
+        </button>
+      </div>
     </div>
   </div>
 
-  <div class="admin-link" onclick="openAdminModal()">
+  <div class="admin-link" onclick="openAdminModal()" data-i18n="adminLink">
     • دخول المشرف / الإدارة •
   </div>
 </div>
@@ -647,53 +665,276 @@
   <div style="font-family: 'Amiri', serif; font-size: 15px; color: var(--gold-light); margin-bottom: 5px;">
     Arresalah e.V. — Berlin
   </div>
-  <div>
-    Turnstraße 83, 10551 Berlin · <span class="footer-gold">Die Botschaft des Friedens</span>
-  </div>
+  <div>Turnstraße 83, 10551 Berlin · <span class="footer-gold">Die Botschaft des Friedens</span></div>
   <div style="font-size: 11px; opacity: 0.7; margin-top: 8px;">
-    © 2026 Arresalah Zentrum Berlin · جميع الحقوق محفوظة
+    © 2026 Arresalah Zentrum Berlin
   </div>
 </footer>
 
 <!-- Modal كلمة مرور الإدارة -->
 <div id="pwModal" class="modal-overlay hidden">
   <div class="modal">
-    <h3>🔑 دخول الإدارة</h3>
-    <input type="password" id="pwInput" placeholder="••••••">
+    <h3>🔑 <span data-i18n="adminLogin">دخول الإدارة</span></h3>
+    <p data-i18n="adminLoginDesc">أدخل كلمة المرور للمتابعة</p>
+    <input type="password" id="pwInput" placeholder="••••••" inputmode="numeric">
     <div>
-      <button class="btn green" onclick="checkPw()">دخول</button>
-      <button class="btn gray" onclick="closeModal()">إلغاء</button>
+      <button class="btn green" onclick="checkPw()" data-i18n="login">دخول</button>
+      <button class="btn gray" onclick="closeModal()" data-i18n="cancel">إلغاء</button>
     </div>
   </div>
 </div>
 
 <script>
 /* ============================================================
-   إعدادات EmailJS (القيم الخاصة بك)
+   إعدادات EmailJS
 ============================================================ */
 const EMAILJS_PUBLIC_KEY  = 'C8kuT0puk8RKrGYV_';
 const EMAILJS_SERVICE_ID  = 'service_fnme2dg';
 const EMAILJS_TEMPLATE_ID = 'template_5sftj1z';
 const ADMIN_EMAIL         = 'arresalah@emailjs.com'; // ← غيّره لبريدك
 const ADMIN_PASSWORD      = '13053';
+const CLEAR_PASSWORD      = '99999'; // كلمة سر مسح البيانات المحلية
 
 emailjs.init(EMAILJS_PUBLIC_KEY);
+
+/* ============================================================
+   الترجمات
+============================================================ */
+const TRANSLATIONS = {
+  ar: {
+    brandName: 'Arresalah Zentrum',
+    brandSub: 'ISLAMISCHES ZENTRUM BERLIN',
+    bismillah: 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ',
+    heroTitle: 'نظام تسجيل بيانات عقد الزواج',
+    heroSub: 'منصة إلكترونية لتسجيل بيانات أطراف العقد بسهولة ودقة',
+    verifyTitle: 'التحقق من رقم العقد',
+    verifySub: 'أدخل رقم العقد للبدء في تعبئة بيانات الأطراف',
+    verifyBtn: 'متابعة ←',
+    progressTitle: 'اكتمال بيانات العقد',
+    chooseRole: 'اختر الطرف لتعبئة بياناته',
+    chooseRoleSub: 'اضغط على أي طرف لبدء التعبئة',
+    allComplete: 'اكتملت بيانات جميع الأطراف',
+    sendContract: 'إرسال العقد إلى المركز',
+    adminPanel: 'لوحة الإدارة',
+    contractCodes: 'أكواد العقد الحالي',
+    currentCodeLabel: 'كود العقد:',
+    dangerZone: '⚠️ منطقة الخطر',
+    dangerDesc: 'مسح جميع البيانات المحفوظة محلياً (ما عدا الأكواد الخمسة)',
+    clearData: 'مسح البيانات المؤقتة',
+    backToMain: 'رجوع للصفحة الرئيسية',
+    adminLink: '• دخول المشرف / الإدارة •',
+    adminLogin: 'دخول الإدارة',
+    adminLoginDesc: 'أدخل كلمة المرور للمتابعة',
+    login: 'دخول',
+    cancel: 'إلغاء',
+    groom: 'الزوج',
+    bride: 'الزوجة',
+    wali: 'الولي',
+    witness1: 'الشاهد الأول',
+    witness2: 'الشاهد الثاني',
+    save: '💾 حفظ ومتابعة',
+    saveComplete: '✅ حفظ ومتابعة',
+    incomplete: 'أكمل الحقول الإلزامية',
+    readyToSave: 'جاهز للحفظ - اضغط للمتابعة',
+    nameDe: 'الاسم بالكامل بالألمانية',
+    nameAr: 'الاسم بالعربي',
+    birthDate: 'تاريخ الميلاد',
+    day: 'يوم', month: 'شهر', year: 'سنة',
+    birthCountry: 'مكان الميلاد - البلد',
+    birthRegion: 'مكان الميلاد - المنطقة',
+    idType: 'نوع الهوية',
+    idCard: 'بطاقة هوية',
+    passport: 'جواز سفر',
+    idNumber: 'رقم الهوية',
+    address: 'العنوان الحالي',
+    addressNumber: 'رقم الشارع',
+    addressStreet: 'اسم الشارع',
+    postalCode: 'الرمز البريدي',
+    city: 'المدينة',
+    motherData: 'بيانات الأم',
+    motherNameDe: 'اسم الأم بالألمانية',
+    motherNameAr: 'اسم الأم بالعربي',
+    dowry: 'قيمة المهر',
+    dowryEuro: 'المهر باليورو (€)',
+    waliOptions: 'خيارات الولي',
+    noWali: 'لا يوجد ولي',
+    brideItself: 'الزوجة بنفسها (تكون وليّاً لنفسها)',
+    noWaliText: 'لا يوجد ولي في هذا العقد',
+    brideItselfText: 'الزوجة وليّ نفسها',
+    keInWali: 'Kein Wali',
+  },
+  de: {
+    brandName: 'Arresalah Zentrum',
+    brandSub: 'ISLAMISCHES ZENTRUM BERLIN',
+    bismillah: 'Im Namen Allahs, des Allerbarmers, des Barmherzigen',
+    heroTitle: 'Eheschließungs-Registrierungssystem',
+    heroSub: 'Eine elektronische Plattform zur einfachen und präzisen Registrierung der Vertragsparteien',
+    verifyTitle: 'Vertragsnummer bestätigen',
+    verifySub: 'Geben Sie die Vertragsnummer ein, um mit der Erfassung zu beginnen',
+    verifyBtn: 'Weiter →',
+    progressTitle: 'Vertragsfortschritt',
+    chooseRole: 'Wählen Sie die Partei zur Erfassung',
+    chooseRoleSub: 'Klicken Sie auf eine Partei, um zu beginnen',
+    allComplete: 'Alle Parteien vollständig',
+    sendContract: 'Vertrag an das Zentrum senden',
+    adminPanel: 'Verwaltungsbereich',
+    contractCodes: 'Aktuelle Vertragscodes',
+    currentCodeLabel: 'Vertragscode:',
+    dangerZone: '⚠️ Gefahrenzone',
+    dangerDesc: 'Alle lokal gespeicherten Daten löschen (außer den 5 Codes)',
+    clearData: 'Temporäre Daten löschen',
+    backToMain: 'Zurück zur Hauptseite',
+    adminLink: '• Administrator-Login •',
+    adminLogin: 'Verwaltungs-Login',
+    adminLoginDesc: 'Passwort eingeben',
+    login: 'Anmelden',
+    cancel: 'Abbrechen',
+    groom: 'Ehemann',
+    bride: 'Ehefrau',
+    wali: 'Wali (Vormund)',
+    witness1: 'Zeuge 1',
+    witness2: 'Zeuge 2',
+    save: '💾 Speichern & Weiter',
+    saveComplete: '✅ Speichern & Weiter',
+    incomplete: 'Pflichtfelder ausfüllen',
+    readyToSave: 'Bereit zum Speichern - klicken zum Fortfahren',
+    nameDe: 'Vollständiger Name auf Deutsch',
+    nameAr: 'Name auf Arabisch',
+    birthDate: 'Geburtsdatum',
+    day: 'Tag', month: 'Monat', year: 'Jahr',
+    birthCountry: 'Geburtsort - Land',
+    birthRegion: 'Geburtsort - Region',
+    idType: 'Ausweistyp',
+    idCard: 'Personalausweis',
+    passport: 'Reisepass',
+    idNumber: 'Ausweisnummer',
+    address: 'Aktuelle Adresse',
+    addressNumber: 'Hausnummer',
+    addressStreet: 'Straßenname',
+    postalCode: 'Postleitzahl',
+    city: 'Stadt',
+    motherData: 'Angaben zur Mutter',
+    motherNameDe: 'Name der Mutter auf Deutsch',
+    motherNameAr: 'Name der Mutter auf Arabisch',
+    dowry: 'Brautgabe (Mahr)',
+    dowryEuro: 'Brautgabe in Euro (€)',
+    waliOptions: 'Wali-Optionen',
+    noWali: 'Kein Wali',
+    brideItself: 'Die Braut selbst (sie ist ihr eigener Wali)',
+    noWaliText: 'Kein Wali in diesem Vertrag',
+    brideItselfText: 'Die Braut ist ihr eigener Wali',
+    keInWali: 'Kein Wali',
+  },
+  en: {
+    brandName: 'Arresalah Zentrum',
+    brandSub: 'ISLAMIC CENTER BERLIN',
+    bismillah: 'In the name of Allah, the Most Gracious, the Most Merciful',
+    heroTitle: 'Marriage Contract Registration System',
+    heroSub: 'An electronic platform for easy and accurate registration of contract parties',
+    verifyTitle: 'Verify Contract Number',
+    verifySub: 'Enter the contract number to begin filling in the parties data',
+    verifyBtn: 'Continue →',
+    progressTitle: 'Contract Completion',
+    chooseRole: 'Choose a party to fill their data',
+    chooseRoleSub: 'Click on any party to begin',
+    allComplete: 'All parties completed',
+    sendContract: 'Send Contract to Center',
+    adminPanel: 'Admin Panel',
+    contractCodes: 'Current Contract Codes',
+    currentCodeLabel: 'Contract Code:',
+    dangerZone: '⚠️ Danger Zone',
+    dangerDesc: 'Clear all locally saved data (except the 5 codes)',
+    clearData: 'Clear Temporary Data',
+    backToMain: 'Back to Main Page',
+    adminLink: '• Admin / Management Login •',
+    adminLogin: 'Admin Login',
+    adminLoginDesc: 'Enter password to continue',
+    login: 'Login',
+    cancel: 'Cancel',
+    groom: 'Groom',
+    bride: 'Bride',
+    wali: 'Wali (Guardian)',
+    witness1: 'Witness 1',
+    witness2: 'Witness 2',
+    save: '💾 Save & Continue',
+    saveComplete: '✅ Save & Continue',
+    incomplete: 'Fill required fields',
+    readyToSave: 'Ready to save - click to continue',
+    nameDe: 'Full Name in German',
+    nameAr: 'Name in Arabic',
+    birthDate: 'Date of Birth',
+    day: 'Day', month: 'Month', year: 'Year',
+    birthCountry: 'Place of Birth - Country',
+    birthRegion: 'Place of Birth - Region',
+    idType: 'ID Type',
+    idCard: 'ID Card',
+    passport: 'Passport',
+    idNumber: 'ID Number',
+    address: 'Current Address',
+    addressNumber: 'Street Number',
+    addressStreet: 'Street Name',
+    postalCode: 'Postal Code',
+    city: 'City',
+    motherData: "Mother's Information",
+    motherNameDe: "Mother's Name in German",
+    motherNameAr: "Mother's Name in Arabic",
+    dowry: 'Dowry (Mahr)',
+    dowryEuro: 'Dowry in Euro (€)',
+    waliOptions: 'Wali Options',
+    noWali: 'No Wali',
+    brideItself: 'The bride herself (she is her own Wali)',
+    noWaliText: 'No Wali in this contract',
+    brideItselfText: 'The bride is her own Wali',
+    keInWali: 'No Wali',
+  }
+};
+
+let currentLang = localStorage.getItem('lang') || 'ar';
+
+function t(key) {
+  return TRANSLATIONS[currentLang][key] || key;
+}
+
+function setLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    el.textContent = t(key);
+  });
+  
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+  
+  // إعادة رسم الصفحات النشطة
+  if (!document.getElementById('inputScreen').classList.contains('hidden')) {
+    renderPartyForm();
+  }
+  if (!document.getElementById('roleScreen').classList.contains('hidden')) {
+    renderRolePicker();
+  }
+}
 
 /* ============================================================
    الأطراف
 ============================================================ */
 const PARTY_DEFS = [
-  { key: 'groom',    label: 'الزوج',         icon: '👨', isSpouse: true, isGroom: true },
-  { key: 'bride',    label: 'الزوجة',        icon: '👩', isSpouse: true, isGroom: false },
-  { key: 'wali',     label: 'الولي',         icon: '🧔', isWali: true },
-  { key: 'witness1', label: 'الشاهد الأول',  icon: '👤' },
-  { key: 'witness2', label: 'الشاهد الثاني', icon: '👤' },
+  { key: 'groom',    labelKey: 'groom',    icon: '👨', isSpouse: true, isGroom: true },
+  { key: 'bride',    labelKey: 'bride',    icon: '👩', isSpouse: true, isGroom: false },
+  { key: 'wali',     labelKey: 'wali',     icon: '🧔', isWali: true },
+  { key: 'witness1', labelKey: 'witness1', icon: '👤' },
+  { key: 'witness2', labelKey: 'witness2', icon: '👤' },
 ];
 const PARTIES_COUNT = 5;
 
 let currentContractCode = null;
 let currentPartyIndex = 0;
 let contractData = {};
+let contractCodes = []; // 5 أكواد ثابتة للجلسة
 
 /* ============================================================
    أدوات
@@ -725,8 +966,96 @@ function emptyParty() {
     addressNumber: '', addressStreet: '',
     postalCode: '', city: '',
     motherNameDe: '', motherNameAr: '',
-    dowry: '', noWali: false,
+    dowry: '',
+    noWali: false,
+    brideItself: false,
   };
+}
+
+function generateRandomCode() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let code = '';
+  for (let i = 0; i < 6; i++) code += chars[Math.floor(Math.random() * chars.length)];
+  return code;
+}
+
+function generateCode() {
+  const code = generateRandomCode();
+  document.getElementById('contractCodeInput').value = code;
+  toast('تم توليد الكود: ' + code, 'success');
+}
+
+function isValidDate(day, month, year) {
+  if (!day || !month || !year) return true;
+  const d = parseInt(day), m = parseInt(month), y = parseInt(year);
+  if (d < 1 || d > 31 || m < 1 || m > 12 || y < 1900 || y > 2100) return false;
+  const date = new Date(y, m - 1, d);
+  return date.getDate() === d && date.getMonth() === m - 1 && date.getFullYear() === y;
+}
+
+/* ============================================================
+   الأكواد الثابتة
+============================================================ */
+function loadCodes() {
+  try {
+    const raw = localStorage.getItem('contract_codes');
+    if (raw) {
+      contractCodes = JSON.parse(raw);
+      if (contractCodes.length !== 5) throw new Error('invalid');
+    } else {
+      throw new Error('no codes');
+    }
+  } catch(e) {
+    // توليد 5 أكواد جديدة
+    contractCodes = [];
+    for (let i = 0; i < 5; i++) contractCodes.push(generateRandomCode());
+    localStorage.setItem('contract_codes', JSON.stringify(contractCodes));
+  }
+}
+
+function getPartyCodeStatus() {
+  // حالة كل كود من الـ 5
+  const status = {};
+  PARTY_DEFS.forEach((def, idx) => {
+    const code = contractCodes[idx];
+    const saved = localStorage.getItem('party_saved_' + code);
+    status[code] = {
+      party: def,
+      saved: saved ? JSON.parse(saved) : null,
+      completed: saved ? true : false,
+    };
+  });
+  return status;
+}
+
+/* ============================================================
+   الحفظ التلقائي
+============================================================ */
+function saveToStorage() {
+  if (!currentContractCode) return;
+  try {
+    localStorage.setItem('draft_' + currentContractCode, JSON.stringify(contractData));
+  } catch(e) { console.warn('save failed', e); }
+}
+
+function restoreFromStorage() {
+  if (!currentContractCode) return false;
+  try {
+    const raw = localStorage.getItem('draft_' + currentContractCode);
+    if (raw) {
+      const saved = JSON.parse(raw);
+      PARTY_DEFS.forEach(def => {
+        if (saved[def.key]) contractData[def.key] = { ...emptyParty(), ...saved[def.key] };
+      });
+      return true;
+    }
+  } catch(e) { console.warn(e); }
+  return false;
+}
+
+function clearDraftStorage() {
+  if (!currentContractCode) return;
+  localStorage.removeItem('draft_' + currentContractCode);
 }
 
 /* ============================================================
@@ -735,20 +1064,24 @@ function emptyParty() {
 function verifyCode() {
   const input = document.getElementById('contractCodeInput').value.trim().toUpperCase();
   if (!input) return toast('أدخل رقم العقد', 'error');
-  if (input.length < 4) return toast('رقم العقد قصير جداً', 'error');
+  if (input.length !== 6) return toast('رقم العقد يجب أن يكون 6 خانات بالضبط', 'error');
+  if (!/^[A-Z0-9]{6}$/.test(input)) return toast('رقم العقد يجب أن يحتوي على أحرف وأرقام إنجليزية فقط', 'error');
 
   currentContractCode = input;
   currentPartyIndex = 0;
   contractData = {};
   PARTY_DEFS.forEach(def => { contractData[def.key] = emptyParty(); });
 
+  const restored = restoreFromStorage();
+  if (restored) toast('تم استرجاع البيانات المحفوظة', 'success');
+
   document.getElementById('verifyScreen').classList.add('hidden');
-  document.getElementById('inputScreen').classList.remove('hidden');
-  renderInputScreen();
+  document.getElementById('roleScreen').classList.remove('hidden');
+  renderRolePicker();
 }
 
 function backToVerify() {
-  if (!confirm('هل تريد إلغاء العقد والعودة؟ ستفقد البيانات المدخلة.')) return;
+  document.getElementById('roleScreen').classList.add('hidden');
   document.getElementById('inputScreen').classList.add('hidden');
   document.getElementById('verifyScreen').classList.remove('hidden');
   document.getElementById('contractCodeInput').value = '';
@@ -757,140 +1090,169 @@ function backToVerify() {
 }
 
 /* ============================================================
-   عرض الشاشة
+   شاشة اختيار الأطراف
 ============================================================ */
-function renderInputScreen() {
-  renderTabs();
-  updateProgress();
-  renderPartyForm();
-  checkAllDone();
-}
-
-function renderTabs() {
-  const tabsEl = document.getElementById('partyTabs');
-  tabsEl.innerHTML = '';
+function renderRolePicker() {
+  updateProgress('progressCircleRole', 'progressTextRole', 'progressSubtextRole');
+  
+  const picker = document.getElementById('rolePicker');
+  picker.innerHTML = '';
+  
   PARTY_DEFS.forEach((def, idx) => {
     const tab = document.createElement('div');
     tab.className = 'party-tab';
-    if (idx === currentPartyIndex) tab.classList.add('active');
     if (isPartyComplete(contractData[def.key], def)) tab.classList.add('done');
-    tab.innerHTML = `<span class="tab-icon">${def.icon}</span>${def.label}`;
+    tab.innerHTML = `<span class="tab-icon">${def.icon}</span>${t(def.labelKey)}`;
     tab.onclick = () => {
       currentPartyIndex = idx;
-      renderInputScreen();
+      document.getElementById('roleScreen').classList.add('hidden');
+      document.getElementById('inputScreen').classList.remove('hidden');
+      renderPartyForm();
     };
-    tabsEl.appendChild(tab);
+    picker.appendChild(tab);
   });
+
+  checkAllDone();
 }
 
 function isPartyComplete(p, def) {
   if (!p) return false;
-  if (def.isWali && p.noWali) return true;
+  if (def.isWali && (p.noWali || p.brideItself)) return true;
   if (!p.nameDe || !p.nameDe.trim()) return false;
   if (def.isSpouse && (!p.motherNameDe || !p.motherNameDe.trim())) return false;
+  if (p.birthDay || p.birthMonth || p.birthYear) {
+    if (!isValidDate(p.birthDay, p.birthMonth, p.birthYear)) return false;
+  }
+  if (def.isGroom && p.dowry) {
+    if (isNaN(parseFloat(p.dowry)) || parseFloat(p.dowry) < 0) return false;
+  }
   return true;
 }
 
-function updateProgress() {
+function updateProgress(circleId, textId, subtextId) {
   const done = PARTY_DEFS.filter(d => isPartyComplete(contractData[d.key], d)).length;
   const pct = Math.round((done / PARTIES_COUNT) * 100);
-  document.getElementById('progressCircle').style.background =
-    `conic-gradient(var(--green-dark) ${pct}%, #e0e0e0 ${pct}%)`;
-  document.getElementById('progressText').textContent = pct + '%';
-  document.getElementById('progressSubtext').textContent = `${done} من 5 أطراف مكتمل`;
+  const circle = document.getElementById(circleId);
+  if (circle) circle.style.background = `conic-gradient(var(--green-dark) ${pct}%, #e0e0e0 ${pct}%)`;
+  const text = document.getElementById(textId);
+  if (text) text.textContent = pct + '%';
+  const sub = document.getElementById(subtextId);
+  if (sub) sub.textContent = `${done} / ${PARTIES_COUNT}`;
 }
 
+function checkAllDone() {
+  const allDone = PARTY_DEFS.every(d => isPartyComplete(contractData[d.key], d));
+  const sendArea = document.getElementById('sendArea');
+  if (sendArea) sendArea.classList.toggle('hidden', !allDone);
+}
+
+/* ============================================================
+   نموذج الطرف
+============================================================ */
 function renderPartyForm() {
   const def = PARTY_DEFS[currentPartyIndex];
   const party = contractData[def.key];
   const wrap = document.getElementById('partyFormWrap');
   wrap.innerHTML = buildPartyForm(def, party);
   attachFormHandlers(def.key);
+  updateSaveButtonState(def, party);
 }
 
-/* ============================================================
-   بناء النموذج
-============================================================ */
 function buildPartyForm(def, p) {
   const spouse = def.isSpouse;
   const groom = def.isGroom;
   const isWali = def.isWali;
 
-  if (isWali && p.noWali) {
-    return `
-      <div class="form-grid">
-        <div class="section-title">📋 بيانات ${def.label}</div>
-        <div class="wali-note">
-          <input type="checkbox" id="noWaliCheck" checked>
-          <label for="noWaliCheck">لا يوجد ولي (Kein Wali)</label>
+  // خيارات الولي
+  if (isWali) {
+    if (p.noWali || p.brideItself) {
+      return `
+        <div class="form-grid">
+          <div class="section-title">${t('waliOptions')}</div>
+          <div class="wali-options">
+            <div class="wali-option-item">
+              <input type="checkbox" id="noWaliCheck" ${p.noWali?'checked':''}>
+              <label for="noWaliCheck">${t('noWali')}</label>
+            </div>
+            <div class="wali-option-item">
+              <input type="checkbox" id="brideItselfCheck" ${p.brideItself?'checked':''}>
+              <label for="brideItselfCheck">${t('brideItself')}</label>
+            </div>
+          </div>
+          <div class="wali-info-box">
+            ${p.noWali ? '✓ ' + t('noWaliText') : '✓ ' + t('brideItselfText')}
+            <small>${p.noWali ? t('keInWali') : ''}</small>
+          </div>
         </div>
-        <div class="wali-none-text">
-          ✓ لا يوجد ولي في هذا العقد<br>
-          <small style="font-weight: normal; font-size: 13px; color: var(--text-gray);">Kein Wali</small>
-        </div>
-      </div>`;
+        <div class="save-btn-wrap">
+          <button class="btn save-btn complete" onclick="savePartyAndReturn()">
+            ${t('saveComplete')}
+          </button>
+          <div class="save-hint">${t('readyToSave')}</div>
+        </div>`;
+    }
   }
 
   let html = `<div class="form-grid">
-    <div class="section-title">بيانات ${def.label}</div>
+    <div class="section-title">${def.icon} ${t(def.labelKey)}</div>
 
     <div class="field">
-      <label>الاسم بالكامل بالألمانية <span class="req">*</span></label>
-      <input type="text" data-k="nameDe" value="${esc(p.nameDe)}" placeholder="Vollständiger Name">
+      <label>${t('nameDe')} <span class="req">*</span></label>
+      <input type="text" data-k="nameDe" value="${esc(p.nameDe)}">
     </div>
     <div class="field">
-      <label>الاسم بالعربي</label>
+      <label>${t('nameAr')}</label>
       <input type="text" data-k="nameAr" value="${esc(p.nameAr)}">
     </div>
 
     <div class="field full">
-      <label>تاريخ الميلاد (يوم / شهر / سنة)</label>
+      <label>${t('birthDate')}</label>
       <div class="date-inputs">
-        <input type="number" min="1" max="31" placeholder="DD" data-k="birthDay" value="${esc(p.birthDay)}">
-        <input type="number" min="1" max="12" placeholder="MM" data-k="birthMonth" value="${esc(p.birthMonth)}">
-        <input type="number" min="1900" max="2100" placeholder="YYYY" data-k="birthYear" value="${esc(p.birthYear)}">
+        <input type="number" min="1" max="31" placeholder="${t('day')}" data-k="birthDay" value="${esc(p.birthDay)}">
+        <input type="number" min="1" max="12" placeholder="${t('month')}" data-k="birthMonth" value="${esc(p.birthMonth)}">
+        <input type="number" min="1900" max="2100" placeholder="${t('year')}" data-k="birthYear" value="${esc(p.birthYear)}">
       </div>
     </div>
 
     <div class="field">
-      <label>مكان الميلاد - البلد</label>
+      <label>${t('birthCountry')}</label>
       <input type="text" data-k="birthCountry" value="${esc(p.birthCountry)}">
     </div>
     <div class="field">
-      <label>مكان الميلاد - المنطقة</label>
+      <label>${t('birthRegion')}</label>
       <input type="text" data-k="birthRegion" value="${esc(p.birthRegion)}">
     </div>
 
     <div class="field">
-      <label>نوع الهوية</label>
+      <label>${t('idType')}</label>
       <select data-k="idType">
-        <option value="id" ${p.idType==='id'?'selected':''}>بطاقة هوية</option>
-        <option value="passport" ${p.idType==='passport'?'selected':''}>جواز سفر</option>
+        <option value="id" ${p.idType==='id'?'selected':''}>${t('idCard')}</option>
+        <option value="passport" ${p.idType==='passport'?'selected':''}>${t('passport')}</option>
       </select>
     </div>
     <div class="field">
-      <label>رقم الهوية</label>
+      <label>${t('idNumber')}</label>
       <input type="text" data-k="idNumber" value="${esc(p.idNumber)}">
     </div>
 
-    <div class="section-title">العنوان الحالي</div>
+    <div class="section-title">${t('address')}</div>
     <div class="address-sub">
       <div class="field">
-        <label>رقم الشارع</label>
+        <label>${t('addressNumber')}</label>
         <input type="text" data-k="addressNumber" value="${esc(p.addressNumber)}">
       </div>
       <div class="field">
-        <label>اسم الشارع</label>
+        <label>${t('addressStreet')}</label>
         <input type="text" data-k="addressStreet" value="${esc(p.addressStreet)}">
       </div>
     </div>
     <div class="address-sub2">
       <div class="field">
-        <label>الرمز البريدي</label>
+        <label>${t('postalCode')}</label>
         <input type="text" data-k="postalCode" value="${esc(p.postalCode)}">
       </div>
       <div class="field">
-        <label>المدينة</label>
+        <label>${t('city')}</label>
         <input type="text" data-k="city" value="${esc(p.city)}">
       </div>
     </div>
@@ -898,13 +1260,13 @@ function buildPartyForm(def, p) {
 
   if (spouse) {
     html += `
-      <div class="section-title">بيانات الأم</div>
+      <div class="section-title">${t('motherData')}</div>
       <div class="field">
-        <label>اسم الأم بالألمانية <span class="req">*</span></label>
+        <label>${t('motherNameDe')} <span class="req">*</span></label>
         <input type="text" data-k="motherNameDe" value="${esc(p.motherNameDe)}">
       </div>
       <div class="field">
-        <label>اسم الأم بالعربي</label>
+        <label>${t('motherNameAr')}</label>
         <input type="text" data-k="motherNameAr" value="${esc(p.motherNameAr)}">
       </div>
     `;
@@ -912,74 +1274,135 @@ function buildPartyForm(def, p) {
 
   if (groom) {
     html += `
-      <div class="section-title">قيمة المهر</div>
+      <div class="section-title">${t('dowry')}</div>
       <div class="field full">
-        <label>المهر باليورو (€)</label>
-        <input type="number" data-k="dowry" value="${esc(p.dowry)}" placeholder="0">
+        <label>${t('dowryEuro')}</label>
+        <input type="number" min="0" step="1" data-k="dowry" value="${esc(p.dowry)}" placeholder="0">
       </div>
     `;
   }
 
   if (isWali) {
     html += `
-      <div class="wali-note">
-        <input type="checkbox" id="noWaliCheck" ${p.noWali?'checked':''}>
-        <label for="noWaliCheck">لا يوجد ولي (Kein Wali)</label>
+      <div class="wali-options">
+        <div class="wali-option-item">
+          <input type="checkbox" id="noWaliCheck" ${p.noWali?'checked':''}>
+          <label for="noWaliCheck">${t('noWali')}</label>
+        </div>
+        <div class="wali-option-item">
+          <input type="checkbox" id="brideItselfCheck" ${p.brideItself?'checked':''}>
+          <label for="brideItselfCheck">${t('brideItself')}</label>
+        </div>
       </div>
     `;
   }
 
-  html += `</div>`;
+  html += `</div>
+    <div class="save-btn-wrap">
+      <button class="btn save-btn" id="saveBtn" onclick="savePartyAndReturn()">
+        ${t('save')}
+      </button>
+      <div class="save-hint" id="saveHint">${t('incomplete')}</div>
+    </div>`;
   return html;
 }
 
 function attachFormHandlers(partyKey) {
   const party = contractData[partyKey];
+
   document.querySelectorAll('#partyFormWrap [data-k]').forEach(inp => {
     inp.addEventListener('input', () => {
       party[inp.dataset.k] = inp.value;
-      updateProgress();
-      renderTabs();
-      checkAllDone();
+      saveToStorage();
+      updateSaveButtonState(PARTY_DEFS[currentPartyIndex], party);
     });
   });
+
   const noWaliCheck = document.getElementById('noWaliCheck');
   if (noWaliCheck) {
     noWaliCheck.addEventListener('change', () => {
       party.noWali = noWaliCheck.checked;
-      updateProgress();
-      renderTabs();
+      if (noWaliCheck.checked) party.brideItself = false;
+      saveToStorage();
       renderPartyForm();
-      checkAllDone();
+    });
+  }
+  const brideItselfCheck = document.getElementById('brideItselfCheck');
+  if (brideItselfCheck) {
+    brideItselfCheck.addEventListener('change', () => {
+      party.brideItself = brideItselfCheck.checked;
+      if (brideItselfCheck.checked) party.noWali = false;
+      saveToStorage();
+      renderPartyForm();
     });
   }
 }
 
-function checkAllDone() {
-  const allDone = PARTY_DEFS.every(d => isPartyComplete(contractData[d.key], d));
-  document.getElementById('submitArea').classList.toggle('hidden', !allDone);
+function updateSaveButtonState(def, party) {
+  const btn = document.getElementById('saveBtn');
+  const hint = document.getElementById('saveHint');
+  if (!btn) return;
+  const complete = isPartyComplete(party, def);
+  btn.classList.toggle('complete', complete);
+  btn.classList.toggle('incomplete', !complete);
+  btn.textContent = complete ? t('saveComplete') : t('save');
+  if (hint) hint.textContent = complete ? t('readyToSave') : t('incomplete');
+}
+
+function savePartyAndReturn() {
+  const def = PARTY_DEFS[currentPartyIndex];
+  const party = contractData[def.key];
+  
+  if (!isPartyComplete(party, def)) {
+    toast('❌ ' + t('incomplete'), 'error');
+    return;
+  }
+  
+  saveToStorage();
+  toast('✓ ' + t(def.labelKey) + ' — تم الحفظ', 'success');
+  
+  document.getElementById('inputScreen').classList.add('hidden');
+  document.getElementById('roleScreen').classList.remove('hidden');
+  renderRolePicker();
 }
 
 /* ============================================================
    الإرسال
 ============================================================ */
 async function submitAllParties() {
+  const errors = [];
   for (const def of PARTY_DEFS) {
-    if (!isPartyComplete(contractData[def.key], def)) {
-      toast('بيانات ' + def.label + ' ناقصة', 'error');
-      currentPartyIndex = PARTY_DEFS.indexOf(def);
-      renderInputScreen();
-      return;
+    const p = contractData[def.key];
+    if (def.isWali && (p.noWali || p.brideItself)) continue;
+    if (!p.nameDe || !p.nameDe.trim()) errors.push(t(def.labelKey) + ': ' + t('nameDe'));
+    if (def.isSpouse && (!p.motherNameDe || !p.motherNameDe.trim())) 
+      errors.push(t(def.labelKey) + ': ' + t('motherNameDe'));
+    if (p.birthDay || p.birthMonth || p.birthYear) {
+      if (!isValidDate(p.birthDay, p.birthMonth, p.birthYear)) 
+        errors.push(t(def.labelKey) + ': ' + t('birthDate'));
     }
+    if (def.isGroom && p.dowry && (isNaN(parseFloat(p.dowry)) || parseFloat(p.dowry) < 0)) 
+      errors.push(t(def.labelKey) + ': ' + t('dowry'));
+  }
+  
+  if (errors.length) {
+    toast('❌ ' + errors.length + ' خطأ', 'error');
+    setTimeout(() => alert(errors.join('\n')), 300);
+    return;
   }
 
-  const btn = document.getElementById('submitAllBtn');
+  const btn = document.querySelector('#sendArea button');
   btn.disabled = true;
-  btn.textContent = '⏳ جارٍ الإرسال...';
+  btn.textContent = '⏳ ...';
 
   const g = contractData.groom, b = contractData.bride, w = contractData.wali;
   const w1 = contractData.witness1, w2 = contractData.witness2;
-  const idTypeAr = t => t === 'passport' ? 'جواز سفر' : 'بطاقة هوية';
+  const idTypeAr = t => t === 'passport' ? 'Passport' : 'ID';
+
+  let waliStatus = 'N/A';
+  if (w.noWali) waliStatus = 'No Wali (Kein Wali)';
+  else if (w.brideItself) waliStatus = 'Bride herself';
+  else waliStatus = 'Wali present';
 
   const payload = {
     to_email: ADMIN_EMAIL,
@@ -1000,17 +1423,17 @@ async function submitAllParties() {
     bride_address: `${b.addressStreet||''} ${b.addressNumber||''}`.trim() || '—',
     bride_postal: b.postalCode || '—', bride_city: b.city || '—',
     bride_mother_de: b.motherNameDe || '—', bride_mother_ar: b.motherNameAr || '—',
-    wali_status: w.noWali ? 'لا يوجد ولي (Kein Wali)' : 'يوجد ولي',
-    wali_name_de: w.noWali ? '—' : (w.nameDe || '—'),
-    wali_name_ar: w.noWali ? '—' : (w.nameAr || '—'),
-    wali_birth: w.noWali ? '—' : getBirthDate(w),
-    wali_birth_region: w.noWali ? '—' : (w.birthRegion || '—'),
-    wali_birth_country: w.noWali ? '—' : (w.birthCountry || '—'),
-    wali_id_type: w.noWali ? '—' : idTypeAr(w.idType),
-    wali_id_number: w.noWali ? '—' : (w.idNumber || '—'),
-    wali_address: w.noWali ? '—' : `${w.addressStreet||''} ${w.addressNumber||''}`.trim() || '—',
-    wali_postal: w.noWali ? '—' : (w.postalCode || '—'),
-    wali_city: w.noWali ? '—' : (w.city || '—'),
+    wali_status: waliStatus,
+    wali_name_de: (w.noWali || w.brideItself) ? '—' : (w.nameDe || '—'),
+    wali_name_ar: (w.noWali || w.brideItself) ? '—' : (w.nameAr || '—'),
+    wali_birth: (w.noWali || w.brideItself) ? '—' : getBirthDate(w),
+    wali_birth_region: (w.noWali || w.brideItself) ? '—' : (w.birthRegion || '—'),
+    wali_birth_country: (w.noWali || w.brideItself) ? '—' : (w.birthCountry || '—'),
+    wali_id_type: (w.noWali || w.brideItself) ? '—' : idTypeAr(w.idType),
+    wali_id_number: (w.noWali || w.brideItself) ? '—' : (w.idNumber || '—'),
+    wali_address: (w.noWali || w.brideItself) ? '—' : `${w.addressStreet||''} ${w.addressNumber||''}`.trim() || '—',
+    wali_postal: (w.noWali || w.brideItself) ? '—' : (w.postalCode || '—'),
+    wali_city: (w.noWali || w.brideItself) ? '—' : (w.city || '—'),
     w1_name_de: w1.nameDe || '—', w1_name_ar: w1.nameAr || '—',
     w1_birth: getBirthDate(w1),
     w1_birth_region: w1.birthRegion || '—', w1_birth_country: w1.birthCountry || '—',
@@ -1028,12 +1451,13 @@ async function submitAllParties() {
   try {
     await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, payload);
     toast('✓ تم إرسال العقد بنجاح', 'success');
-    document.getElementById('inputScreen').innerHTML = `
+    clearDraftStorage();
+    
+    document.getElementById('roleScreen').innerHTML = `
       <div class="success-box">
         <span class="big-check">✓</span>
         تم إرسال العقد بنجاح
         <small>رقم العقد: <strong>${currentContractCode}</strong></small>
-        <small>تم إرسال البيانات إلى المركز</small>
         <div style="margin-top:25px;">
           <button class="btn gold small" onclick="location.reload()">تسجيل عقد جديد</button>
         </div>
@@ -1042,12 +1466,12 @@ async function submitAllParties() {
     console.error('EmailJS Error:', err);
     toast('فشل الإرسال، حاول مجدداً', 'error');
     btn.disabled = false;
-    btn.textContent = '📨 إرسال العقد إلى المركز';
+    btn.textContent = '📨 ' + t('sendContract');
   }
 }
 
 /* ============================================================
-   الإدارة
+   لوحة الإدارة
 ============================================================ */
 function openAdminModal() {
   document.getElementById('pwModal').classList.remove('hidden');
@@ -1060,7 +1484,63 @@ function checkPw() {
     return toast('كلمة المرور خاطئة', 'error');
   }
   closeModal();
-  toast('مرحباً بك في لوحة الإدارة', 'success');
+  showAdminPanel();
+}
+
+function showAdminPanel() {
+  document.getElementById('verifyScreen').classList.add('hidden');
+  document.getElementById('roleScreen').classList.add('hidden');
+  document.getElementById('inputScreen').classList.add('hidden');
+  document.getElementById('adminPanel').classList.remove('hidden');
+  
+  // اعرض كود العقد الحالي
+  const codeEl = document.getElementById('adminContractCode');
+  codeEl.textContent = currentContractCode || '— لا يوجد عقد نشط —';
+  
+  // اعرض الأكواد الخمسة وحالتها
+  const list = document.getElementById('adminCodeList');
+  list.innerHTML = '';
+  const status = getPartyCodeStatus();
+  
+  PARTY_DEFS.forEach((def, idx) => {
+    const code = contractCodes[idx];
+    const item = document.createElement('div');
+    item.className = 'code-item' + (status[code].completed ? ' done' : '');
+    item.innerHTML = `
+      <span class="code-val">${code}</span>
+      <span class="party-name">${def.icon} ${t(def.labelKey)}</span>
+      <span class="status-badge ${status[code].completed ? 'done' : 'pending'}">
+        ${status[code].completed ? '✓ ' + (currentLang === 'ar' ? 'مكتمل' : currentLang === 'de' ? 'Fertig' : 'Done') : '⏳ ...'}
+      </span>
+    `;
+    list.appendChild(item);
+  });
+}
+
+function closeAdmin() {
+  document.getElementById('adminPanel').classList.add('hidden');
+  document.getElementById('verifyScreen').classList.remove('hidden');
+}
+
+function confirmClearStorage() {
+  const pw = prompt('🔐 أدخل كلمة سر مسح البيانات:');
+  if (pw !== CLEAR_PASSWORD) return toast('كلمة المرور خاطئة', 'error');
+  
+  if (!confirm('⚠️ هل أنت متأكد؟ سيتم مسح جميع البيانات المؤقتة (ما عدا الأكواد 5)')) return;
+  
+  // احذف كل شيء ما عدا contract_codes و lang
+  const keysToKeep = ['contract_codes', 'lang'];
+  const allKeys = Object.keys(localStorage);
+  let cleared = 0;
+  allKeys.forEach(k => {
+    if (!keysToKeep.includes(k)) {
+      localStorage.removeItem(k);
+      cleared++;
+    }
+  });
+  
+  toast(`تم مسح ${cleared} عنصر — الأكواد محفوظة`, 'success');
+  showAdminPanel();
 }
 
 /* ============================================================
@@ -1072,6 +1552,12 @@ document.getElementById('contractCodeInput').addEventListener('keydown', e => {
 document.getElementById('pwInput').addEventListener('keydown', e => {
   if (e.key === 'Enter') checkPw();
 });
+
+/* ============================================================
+   التهيئة
+============================================================ */
+loadCodes();
+setLanguage(currentLang);
 </script>
 </body>
 </html>
