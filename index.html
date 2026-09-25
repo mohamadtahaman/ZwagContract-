@@ -22,118 +22,66 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Tajawal', sans-serif;
-    background: var(--cream);
-    min-height: 100vh;
-    color: var(--text-dark);
-    line-height: 1.6;
+    background: var(--cream); min-height: 100vh;
+    color: var(--text-dark); line-height: 1.6;
   }
 
-  /* ============ الشريط العلوي ============ */
   .topbar {
-    background: var(--green-dark);
-    color: #fff;
-    padding: 6px 20px;
-    font-size: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
+    background: var(--green-dark); color: #fff;
+    padding: 6px 20px; font-size: 12px;
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 10px;
   }
-  .topbar-text { letter-spacing: 0.5px; }
   .lang-switcher {
-    display: flex;
-    gap: 4px;
-    background: rgba(0,0,0,0.2);
-    padding: 3px;
-    border-radius: 20px;
+    display: flex; gap: 4px;
+    background: rgba(0,0,0,0.2); padding: 3px; border-radius: 20px;
   }
   .lang-btn {
-    background: transparent;
-    color: #fff;
-    border: none;
-    padding: 4px 12px;
-    border-radius: 15px;
-    cursor: pointer;
-    font-size: 11px;
-    font-weight: 600;
-    transition: 0.2s;
-    font-family: inherit;
+    background: transparent; color: #fff; border: none;
+    padding: 4px 12px; border-radius: 15px;
+    cursor: pointer; font-size: 11px; font-weight: 600;
+    transition: 0.2s; font-family: inherit;
   }
   .lang-btn:hover { background: rgba(255,255,255,0.1); }
-  .lang-btn.active {
-    background: var(--gold);
-    color: var(--green-dark);
-  }
+  .lang-btn.active { background: var(--gold); color: var(--green-dark); }
 
-  /* ============ الهيدر ============ */
   header {
-    background: #fff;
-    border-bottom: 3px solid var(--green-dark);
-    padding: 18px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
+    background: #fff; border-bottom: 3px solid var(--green-dark);
+    padding: 18px 30px; display: flex;
+    justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 15px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   }
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
+  .brand { display: flex; align-items: center; gap: 15px; }
   .brand-logo {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
+    width: 70px; height: 70px; border-radius: 50%;
     background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
     color: var(--gold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     box-shadow: 0 4px 10px rgba(26,77,58,0.3);
     border: 3px solid var(--gold);
-    position: relative;
-    overflow: hidden;
   }
-  .brand-logo svg {
-    width: 45px;
-    height: 45px;
-  }
+  .brand-logo svg { width: 45px; height: 45px; }
   .brand-text h1 {
-    font-family: 'Amiri', serif;
-    font-size: 22px;
-    color: var(--green-dark);
-    font-weight: 900;
-    line-height: 1.2;
+    font-family: 'Amiri', serif; font-size: 22px;
+    color: var(--green-dark); font-weight: 900; line-height: 1.2;
   }
   .brand-text p {
-    font-size: 11px;
-    color: var(--text-gray);
-    letter-spacing: 1.5px;
+    font-size: 11px; color: var(--text-gray); letter-spacing: 1.5px;
   }
   .header-info {
-    font-size: 13px;
-    color: var(--text-gray);
-    text-align: left;
-    line-height: 1.5;
+    font-size: 13px; color: var(--text-gray);
+    text-align: left; line-height: 1.5;
   }
   .header-info strong { color: var(--green-dark); }
 
-  /* ============ الهيرو ============ */
   .hero {
     background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
-    color: #fff;
-    text-align: center;
-    padding: 40px 20px 50px;
-    position: relative;
-    overflow: hidden;
+    color: #fff; text-align: center;
+    padding: 40px 20px 50px; position: relative; overflow: hidden;
   }
   .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
+    content: ''; position: absolute; inset: 0;
     background-image: 
       radial-gradient(circle at 20% 30%, rgba(212,169,68,0.15) 0%, transparent 50%),
       radial-gradient(circle at 80% 70%, rgba(212,169,68,0.1) 0%, transparent 50%);
@@ -141,36 +89,23 @@
   }
   .hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
   .hero .bismillah {
-    font-family: 'Amiri', serif;
-    font-size: 26px;
-    color: var(--gold-light);
-    margin-bottom: 15px;
-    font-weight: 700;
+    font-family: 'Amiri', serif; font-size: 26px;
+    color: var(--gold-light); margin-bottom: 15px; font-weight: 700;
   }
   .hero h2 { font-size: 28px; margin-bottom: 10px; font-weight: 700; }
   .hero p { font-size: 15px; opacity: 0.9; max-width: 500px; margin: 0 auto; }
   .hero .ornament {
-    width: 80px;
-    height: 3px;
-    background: var(--gold);
-    margin: 20px auto 0;
-    border-radius: 2px;
+    width: 80px; height: 3px; background: var(--gold);
+    margin: 20px auto 0; border-radius: 2px;
   }
 
-  /* ============ البطاقة الرئيسية ============ */
   .container {
-    max-width: 950px;
-    margin: -30px auto 30px;
-    background: #fff;
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-    position: relative;
-    z-index: 2;
-    border: 1px solid var(--border);
+    max-width: 950px; margin: -30px auto 30px;
+    background: #fff; border-radius: 12px;
+    padding: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    position: relative; z-index: 2; border: 1px solid var(--border);
   }
 
-  /* ============ شاشة التحقق ============ */
   #verifyScreen { text-align: center; padding: 20px 10px 30px; }
   #verifyScreen .icon-circle {
     width: 80px; height: 80px; border-radius: 50%;
@@ -183,8 +118,8 @@
   #verifyScreen h2 { color: var(--green-dark); margin-bottom: 8px; font-size: 22px; font-weight: 700; }
   #verifyScreen .subtitle { color: var(--text-gray); font-size: 14px; margin-bottom: 25px; }
   .code-input-wrap {
-    display: flex; gap: 8px; justify-content: center; align-items: center;
-    flex-wrap: wrap; margin-bottom: 10px;
+    display: flex; gap: 8px; justify-content: center;
+    align-items: center; flex-wrap: wrap; margin-bottom: 10px;
   }
   #verifyScreen input {
     width: 200px; padding: 14px 18px; font-size: 20px;
@@ -200,7 +135,6 @@
     box-shadow: 0 0 0 4px rgba(26,77,58,0.1);
   }
 
-  /* ============ الأزرار ============ */
   .btn {
     background: var(--green-dark); color: #fff;
     border: none; padding: 13px 30px; border-radius: 8px;
@@ -225,54 +159,35 @@
   .btn.small { padding: 8px 16px; font-size: 13px; }
   .btn.tiny { padding: 5px 12px; font-size: 12px; }
 
-  /* زر الحفظ الكبير */
   .save-btn-wrap {
-    text-align: center;
-    margin-top: 25px;
-    padding-top: 20px;
-    border-top: 2px dashed var(--border);
+    text-align: center; margin-top: 25px;
+    padding-top: 20px; border-top: 2px dashed var(--border);
   }
   .save-btn {
-    padding: 14px 45px;
-    font-size: 16px;
-    border-radius: 30px;
-    font-weight: 700;
-    transition: 0.3s;
+    padding: 14px 45px; font-size: 16px;
+    border-radius: 30px; font-weight: 700; transition: 0.3s;
   }
-  .save-btn.incomplete {
-    background: var(--red);
-    color: #fff;
-  }
+  .save-btn.incomplete { background: var(--red); color: #fff; }
   .save-btn.incomplete:hover {
     background: #c0392b;
     box-shadow: 0 6px 20px rgba(168,51,42,0.4);
   }
-  .save-btn.complete {
-    background: var(--green-dark);
-    color: #fff;
-  }
+  .save-btn.complete { background: var(--green-dark); color: #fff; }
   .save-btn.complete:hover {
     background: var(--green-light);
     box-shadow: 0 6px 20px rgba(26,77,58,0.4);
   }
-  .save-hint {
-    font-size: 12px;
-    color: var(--text-gray);
-    margin-top: 8px;
-  }
+  .save-hint { font-size: 12px; color: var(--text-gray); margin-top: 8px; }
 
-  /* ============ تبويبات الأطراف ============ */
   .party-tabs {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 8px;
-    margin-bottom: 22px;
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 8px; margin-bottom: 22px;
   }
   .party-tab {
-    padding: 12px 6px;
-    border: 2px solid var(--border); border-radius: 10px;
-    background: #fafaf7; cursor: pointer; font-size: 13px;
-    transition: 0.2s; font-weight: 600; color: var(--text-gray);
+    padding: 12px 6px; border: 2px solid var(--border);
+    border-radius: 10px; background: #fafaf7;
+    cursor: pointer; font-size: 13px; transition: 0.2s;
+    font-weight: 600; color: var(--text-gray);
     text-align: center; position: relative;
   }
   .party-tab .tab-icon { font-size: 18px; display: block; margin-bottom: 3px; }
@@ -290,13 +205,12 @@
     content: '✓'; position: absolute; top: 4px; left: 6px;
     background: var(--green-dark); color: #fff;
     width: 18px; height: 18px; border-radius: 50%;
-    font-size: 11px; display: flex; align-items: center; justify-content: center;
-    font-weight: bold;
+    font-size: 11px; display: flex;
+    align-items: center; justify-content: center; font-weight: bold;
   }
   .party-tab.active.done { background: var(--green-dark); color: #fff; }
   .party-tab.active.done::after { background: var(--gold); color: var(--green-dark); }
 
-  /* ============ دائرة التقدم ============ */
   .progress-section {
     display: flex; align-items: center; gap: 20px;
     padding: 15px 20px; background: var(--cream);
@@ -320,7 +234,6 @@
   .progress-text h4 { font-size: 15px; color: var(--green-dark); margin-bottom: 3px; }
   .progress-text p { font-size: 12px; color: var(--text-gray); }
 
-  /* ============ النموذج ============ */
   .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .form-grid .full { grid-column: 1 / -1; }
   .field label {
@@ -328,13 +241,14 @@
     color: var(--text-dark); font-weight: 600;
   }
   .field label .req { color: #c0392b; }
-  .field input, .field select {
+  .field input, .field select, .field textarea {
     width: 100%; padding: 11px 13px;
     border: 1.5px solid var(--border); border-radius: 8px;
     font-size: 14px; outline: none; transition: 0.2s;
     font-family: inherit; background: #fafaf7; color: var(--text-dark);
   }
-  .field input:focus, .field select:focus {
+  .field textarea { resize: vertical; min-height: 70px; }
+  .field input:focus, .field select:focus, .field textarea:focus {
     border-color: var(--green-dark); background: #fff;
     box-shadow: 0 0 0 3px rgba(26,77,58,0.08);
   }
@@ -353,42 +267,61 @@
     background: var(--gold); border-radius: 2px;
   }
 
-  /* ============ ولي ============ */
-  .wali-options {
+  /* ============ الولي / الشاهد - مربع اختيار ============ */
+  .special-box {
     grid-column: 1 / -1;
-    display: flex; flex-direction: column; gap: 10px;
-    padding: 16px; background: #fffbf0;
+    padding: 16px;
+    background: #fffbf0;
     border: 2px dashed var(--gold);
     border-radius: 12px;
+    display: flex; align-items: center; gap: 12px;
     margin-bottom: 8px;
   }
-  .wali-option-item {
-    display: flex; align-items: center; gap: 10px;
-    cursor: pointer; padding: 6px; border-radius: 8px;
-    transition: 0.2s;
-  }
-  .wali-option-item:hover { background: rgba(212,169,68,0.1); }
-  .wali-option-item input[type="checkbox"] {
-    width: 22px; height: 22px; cursor: pointer;
+  .special-box input[type="checkbox"] {
+    width: 24px; height: 24px; cursor: pointer;
     accent-color: var(--green-dark); flex-shrink: 0;
   }
-  .wali-option-item label {
+  .special-box label {
     font-weight: 700; color: #8b6f1e;
-    cursor: pointer; margin: 0; font-size: 14px;
+    cursor: pointer; margin: 0; font-size: 15px;
   }
-  .wali-info-box {
+  .special-info-box {
     grid-column: 1 / -1; padding: 25px;
     background: linear-gradient(135deg, #e8f3ed, #f0f9f3);
     border: 2px solid var(--green-light);
     border-radius: 10px; text-align: center;
     font-size: 17px; font-weight: 700; color: var(--green-dark);
   }
-  .wali-info-box small {
-    display: block; font-weight: normal;
-    font-size: 13px; color: var(--text-gray); margin-top: 5px;
+
+  /* ============ المهر - صندوق خاص ============ */
+  .dowry-box {
+    grid-column: 1 / -1;
+    padding: 18px;
+    background: linear-gradient(135deg, #f8f5ec, #fef9f0);
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    margin-top: 10px;
+  }
+  .dowry-box-title {
+    color: var(--green-dark);
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed var(--gold);
+  }
+  .dowry-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .dowry-fields .field-full {
+    grid-column: 1 / -1;
   }
 
-  /* ============ صندوق النجاح ============ */
   .success-box {
     text-align: center; padding: 50px 20px;
     background: linear-gradient(135deg, #e8f3ed, #f0f9f3);
@@ -404,7 +337,6 @@
 
   .hidden { display: none !important; }
 
-  /* ============ رابط الإدارة ============ */
   .admin-link {
     text-align: center; margin-top: 25px; padding-top: 20px;
     border-top: 1px dashed var(--border);
@@ -413,16 +345,13 @@
   }
   .admin-link:hover { color: var(--green-dark); }
 
-  /* ============ Footer ============ */
   footer {
     background: var(--green-dark); color: #c9d9d2;
     text-align: center; padding: 20px 15px;
     font-size: 12px; line-height: 1.8;
   }
   footer .footer-gold { color: var(--gold-light); font-weight: 700; }
-  footer a { color: var(--gold-light); text-decoration: none; }
 
-  /* ============ Toast ============ */
   .toast {
     position: fixed; top: 20px; left: 50%;
     transform: translateX(-50%);
@@ -436,7 +365,6 @@
   .toast.error { background: #a8332a; border-right-color: #f0a500; }
   .toast.success { background: var(--green-dark); border-right-color: var(--gold); }
 
-  /* ============ Modal ============ */
   .modal-overlay {
     position: fixed; inset: 0; background: rgba(0,0,0,0.6);
     display: flex; align-items: center; justify-content: center;
@@ -444,34 +372,28 @@
   }
   .modal {
     background: #fff; padding: 28px 24px; border-radius: 14px;
-    width: 100%; max-width: 420px; text-align: center;
+    width: 100%; max-width: 480px; text-align: center;
     box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    max-height: 90vh; overflow-y: auto;
   }
   .modal h3 { color: var(--green-dark); margin-bottom: 15px; font-size: 18px; }
   .modal input {
     width: 100%; padding: 13px; border: 2px solid var(--border);
     border-radius: 8px; text-align: center; font-size: 18px;
     letter-spacing: 4px; margin-bottom: 15px; outline: none;
-    background: var(--cream); transition: 0.2s;
-    font-family: inherit;
+    background: var(--cream); transition: 0.2s; font-family: inherit;
   }
   .modal input:focus { border-color: var(--green-dark); background: #fff; }
   .modal p { color: var(--text-gray); font-size: 13px; margin-bottom: 15px; }
 
-  /* ============ لوحة الإدارة ============ */
-  .admin-panel {
-    background: var(--cream); padding: 20px;
-    border-radius: 12px; border: 1px solid var(--border);
-  }
+  .admin-panel { background: var(--cream); padding: 20px; border-radius: 12px; border: 1px solid var(--border); }
   .admin-section {
-    background: #fff; padding: 18px;
-    border-radius: 10px; margin-bottom: 15px;
-    border: 1px solid var(--border);
+    background: #fff; padding: 18px; border-radius: 10px;
+    margin-bottom: 15px; border: 1px solid var(--border);
   }
   .admin-section h3 {
     color: var(--green-dark); font-size: 15px;
-    margin-bottom: 12px; display: flex;
-    align-items: center; gap: 8px;
+    margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
   }
   .admin-section h3::before {
     content: ''; width: 4px; height: 16px;
@@ -491,8 +413,7 @@
     color: var(--green-dark); min-width: 80px;
   }
   .code-item .party-name {
-    flex: 1; font-size: 13px; color: var(--text-dark);
-    min-width: 100px;
+    flex: 1; font-size: 13px; color: var(--text-dark); min-width: 100px;
   }
   .code-item .status-badge {
     padding: 3px 10px; border-radius: 12px;
@@ -501,11 +422,25 @@
   .status-badge.done { background: #d4f4dd; color: var(--green-dark); }
   .status-badge.pending { background: #fff0d4; color: #b8860b; }
 
-  /* ============ Responsive ============ */
+  .preview-data {
+    text-align: right; direction: rtl;
+    background: var(--cream); padding: 15px;
+    border-radius: 8px; font-size: 13px;
+    line-height: 1.9; margin-bottom: 15px;
+  }
+  .preview-data .row {
+    display: flex; justify-content: space-between;
+    gap: 10px; padding: 4px 0;
+    border-bottom: 1px dotted #ddd;
+  }
+  .preview-data .row:last-child { border-bottom: none; }
+  .preview-data .row strong { color: var(--green-dark); }
+
   @media (max-width: 720px) {
     .party-tabs { grid-template-columns: repeat(3, 1fr); }
     .form-grid { grid-template-columns: 1fr; }
     .address-sub, .address-sub2 { grid-template-columns: 1fr; }
+    .dowry-fields { grid-template-columns: 1fr; }
     header { padding: 14px 18px; }
     .brand-text h1 { font-size: 18px; }
     .brand-logo { width: 55px; height: 55px; }
@@ -524,7 +459,6 @@
 </head>
 <body>
 
-<!-- الشريط العلوي -->
 <div class="topbar">
   <div class="topbar-text">🕌 Arresalah e.V. — Berlin</div>
   <div class="lang-switcher">
@@ -534,16 +468,12 @@
   </div>
 </div>
 
-<!-- الهيدر -->
 <header>
   <div class="brand">
     <div class="brand-logo">
-      <!-- شعار مقارب لشعار Arresalah -->
       <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <!-- كتاب مفتوح -->
         <path d="M 50 30 Q 30 25 15 30 L 15 70 Q 30 65 50 70 Z" fill="#d4a944" opacity="0.9"/>
         <path d="M 50 30 Q 70 25 85 30 L 85 70 Q 70 65 50 70 Z" fill="#e9c46a" opacity="0.9"/>
-        <!-- الهلال والنجمة -->
         <path d="M 55 20 A 12 12 0 1 0 55 44 A 9 9 0 1 1 55 20 Z" fill="#d4a944"/>
         <path d="M 68 25 L 70 30 L 75 30 L 71 33 L 72 38 L 68 35 L 64 38 L 65 33 L 61 30 L 66 30 Z" fill="#d4a944"/>
       </svg>
@@ -559,7 +489,6 @@
   </div>
 </header>
 
-<!-- الهيرو -->
 <section class="hero">
   <div class="hero-content">
     <div class="bismillah" data-i18n="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
@@ -569,10 +498,8 @@
   </div>
 </section>
 
-<!-- البطاقة الرئيسية -->
 <div class="container">
 
-  <!-- شاشة التحقق -->
   <div id="verifyScreen">
     <div class="icon-circle">🔐</div>
     <h2 data-i18n="verifyTitle">التحقق من رقم العقد</h2>
@@ -585,7 +512,6 @@
     <button class="btn gold" onclick="verifyCode()" data-i18n="verifyBtn">متابعة ←</button>
   </div>
 
-  <!-- شاشة اختيار الأطراف -->
   <div id="roleScreen" class="hidden">
     <div class="progress-section">
       <div class="progress-circle" id="progressCircleRole">
@@ -593,7 +519,7 @@
       </div>
       <div class="progress-text">
         <h4 data-i18n="progressTitle">اكتمال بيانات العقد</h4>
-        <p id="progressSubtextRole">0 من 5 أطراف مكتمل</p>
+        <p id="progressSubtextRole">0 / 5</p>
       </div>
     </div>
 
@@ -616,12 +542,10 @@
     </div>
   </div>
 
-  <!-- شاشة الإدخال -->
   <div id="inputScreen" class="hidden">
     <div id="partyFormWrap"></div>
   </div>
 
-  <!-- لوحة الإدارة -->
   <div id="adminPanel" class="hidden">
     <h2 style="color:var(--green-dark); margin-bottom:15px; text-align:center; font-size:20px;">
       🛠 <span data-i18n="adminPanel">لوحة الإدارة</span>
@@ -629,12 +553,16 @@
 
     <div class="admin-panel">
       <div class="admin-section">
-        <h3 data-i18n="contractCodes">أكواد العقد الحالي</h3>
-        <p style="font-size:12px; color:var(--text-gray); margin-bottom:10px;">
-          <span data-i18n="currentCodeLabel">كود العقد:</span>
-          <strong id="adminContractCode" style="color:var(--green-dark); letter-spacing:2px;"></strong>
+        <h3 data-i18n="contractCodes">أكواد العقود المتاحة (5 عقود)</h3>
+        <p style="font-size:12px; color:var(--text-gray); margin-bottom:10px;" data-i18n="codesDesc">
+          كل كود يُستخدم لعقد واحد كامل (جميع الأطراف 5)
         </p>
         <div class="code-list" id="adminCodeList"></div>
+      </div>
+
+      <div class="admin-section" id="currentContractPreview">
+        <h3 data-i18n="previewCurrent">معاينة العقد الحالي</h3>
+        <div id="currentContractContent"></div>
       </div>
 
       <div class="admin-section" style="border: 2px solid #f0a500; background: #fffbf0;">
@@ -660,7 +588,6 @@
   </div>
 </div>
 
-<!-- Footer -->
 <footer>
   <div style="font-family: 'Amiri', serif; font-size: 15px; color: var(--gold-light); margin-bottom: 5px;">
     Arresalah e.V. — Berlin
@@ -671,12 +598,11 @@
   </div>
 </footer>
 
-<!-- Modal كلمة مرور الإدارة -->
 <div id="pwModal" class="modal-overlay hidden">
   <div class="modal">
     <h3>🔑 <span data-i18n="adminLogin">دخول الإدارة</span></h3>
     <p data-i18n="adminLoginDesc">أدخل كلمة المرور للمتابعة</p>
-    <input type="password" id="pwInput" placeholder="••••••" inputmode="numeric">
+    <input type="password" id="pwInput" placeholder="••••••">
     <div>
       <button class="btn green" onclick="checkPw()" data-i18n="login">دخول</button>
       <button class="btn gray" onclick="closeModal()" data-i18n="cancel">إلغاء</button>
@@ -684,16 +610,24 @@
   </div>
 </div>
 
+<div id="previewModal" class="modal-overlay hidden">
+  <div class="modal" style="max-width: 550px;">
+    <h3 id="previewTitle">معاينة</h3>
+    <div id="previewContent" class="preview-data"></div>
+    <button class="btn gray" onclick="closePreviewModal()">إغلاق</button>
+  </div>
+</div>
+
 <script>
 /* ============================================================
-   إعدادات EmailJS
+   إعدادات
 ============================================================ */
 const EMAILJS_PUBLIC_KEY  = 'C8kuT0puk8RKrGYV_';
 const EMAILJS_SERVICE_ID  = 'service_fnme2dg';
 const EMAILJS_TEMPLATE_ID = 'template_5sftj1z';
-const ADMIN_EMAIL         = 'arresalah@emailjs.com'; // ← غيّره لبريدك
+const ADMIN_EMAIL         = 'u6784554127@gmail.com'; // ← غيّره لبريدك
 const ADMIN_PASSWORD      = '13053';
-const CLEAR_PASSWORD      = '99999'; // كلمة سر مسح البيانات المحلية
+const CLEAR_PASSWORD      = 'ArresalahClear2026'; // كلمة سر قوية لمسح البيانات
 
 emailjs.init(EMAILJS_PUBLIC_KEY);
 
@@ -716,8 +650,9 @@ const TRANSLATIONS = {
     allComplete: 'اكتملت بيانات جميع الأطراف',
     sendContract: 'إرسال العقد إلى المركز',
     adminPanel: 'لوحة الإدارة',
-    contractCodes: 'أكواد العقد الحالي',
-    currentCodeLabel: 'كود العقد:',
+    contractCodes: 'أكواد العقود المتاحة (5 عقود)',
+    codesDesc: 'كل كود يُستخدم لعقد واحد كامل (جميع الأطراف 5)',
+    previewCurrent: 'معاينة العقد الحالي',
     dangerZone: '⚠️ منطقة الخطر',
     dangerDesc: 'مسح جميع البيانات المحفوظة محلياً (ما عدا الأكواد الخمسة)',
     clearData: 'مسح البيانات المؤقتة',
@@ -754,51 +689,57 @@ const TRANSLATIONS = {
     motherData: 'بيانات الأم',
     motherNameDe: 'اسم الأم بالألمانية',
     motherNameAr: 'اسم الأم بالعربي',
-    dowry: 'قيمة المهر',
-    dowryEuro: 'المهر باليورو (€)',
-    waliOptions: 'خيارات الولي',
-    noWali: 'لا يوجد ولي',
-    brideItself: 'الزوجة بنفسها (تكون وليّاً لنفسها)',
-    noWaliText: 'لا يوجد ولي في هذا العقد',
-    brideItselfText: 'الزوجة وليّ نفسها',
-    keInWali: 'Kein Wali',
+    dowryTitle: 'تفاصيل المهر (Brautgabe)',
+    dowryAdvance: 'المهر المقدم (€)',
+    dowryDeferred: 'المهر المؤخر (€)',
+    dowryNotes: 'ملاحظات حول المهر',
+    dowryNotesPH: 'اكتب أي ملاحظات إضافية هنا...',
+    waliIsBride: 'الولي هي الزوجة نفسها',
+    waliIsBrideText: 'الولي هي الزوجة نفسها',
+    witnessIsCenter: 'الشاهد طرف مركز الرسالة',
+    witnessIsCenterText: 'الشاهد طرف مركز الرسالة',
+    previewBtn: '👁 معاينة',
+    previewParty: 'معاينة بيانات',
+    noData: 'لا توجد بيانات بعد',
+    viewDetails: 'عرض التفاصيل',
   },
   de: {
     brandName: 'Arresalah Zentrum',
     brandSub: 'ISLAMISCHES ZENTRUM BERLIN',
     bismillah: 'Im Namen Allahs, des Allerbarmers, des Barmherzigen',
     heroTitle: 'Eheschließungs-Registrierungssystem',
-    heroSub: 'Eine elektronische Plattform zur einfachen und präzisen Registrierung der Vertragsparteien',
+    heroSub: 'Eine elektronische Plattform zur einfachen und präzisen Registrierung',
     verifyTitle: 'Vertragsnummer bestätigen',
-    verifySub: 'Geben Sie die Vertragsnummer ein, um mit der Erfassung zu beginnen',
+    verifySub: 'Geben Sie die Vertragsnummer ein',
     verifyBtn: 'Weiter →',
     progressTitle: 'Vertragsfortschritt',
-    chooseRole: 'Wählen Sie die Partei zur Erfassung',
-    chooseRoleSub: 'Klicken Sie auf eine Partei, um zu beginnen',
+    chooseRole: 'Wählen Sie die Partei',
+    chooseRoleSub: 'Klicken Sie auf eine Partei',
     allComplete: 'Alle Parteien vollständig',
-    sendContract: 'Vertrag an das Zentrum senden',
-    adminPanel: 'Verwaltungsbereich',
-    contractCodes: 'Aktuelle Vertragscodes',
-    currentCodeLabel: 'Vertragscode:',
+    sendContract: 'Vertrag senden',
+    adminPanel: 'Verwaltung',
+    contractCodes: 'Verfügbare Vertragscodes (5)',
+    codesDesc: 'Jeder Code = ein Vertrag (5 Parteien)',
+    previewCurrent: 'Aktuelle Vertragsvorschau',
     dangerZone: '⚠️ Gefahrenzone',
-    dangerDesc: 'Alle lokal gespeicherten Daten löschen (außer den 5 Codes)',
+    dangerDesc: 'Alle lokalen Daten löschen (außer 5 Codes)',
     clearData: 'Temporäre Daten löschen',
-    backToMain: 'Zurück zur Hauptseite',
-    adminLink: '• Administrator-Login •',
-    adminLogin: 'Verwaltungs-Login',
+    backToMain: 'Zurück',
+    adminLink: '• Administrator •',
+    adminLogin: 'Admin-Login',
     adminLoginDesc: 'Passwort eingeben',
     login: 'Anmelden',
     cancel: 'Abbrechen',
     groom: 'Ehemann',
     bride: 'Ehefrau',
-    wali: 'Wali (Vormund)',
+    wali: 'Wali',
     witness1: 'Zeuge 1',
     witness2: 'Zeuge 2',
-    save: '💾 Speichern & Weiter',
-    saveComplete: '✅ Speichern & Weiter',
+    save: '💾 Speichern',
+    saveComplete: '✅ Speichern',
     incomplete: 'Pflichtfelder ausfüllen',
-    readyToSave: 'Bereit zum Speichern - klicken zum Fortfahren',
-    nameDe: 'Vollständiger Name auf Deutsch',
+    readyToSave: 'Bereit zum Speichern',
+    nameDe: 'Name auf Deutsch',
     nameAr: 'Name auf Arabisch',
     birthDate: 'Geburtsdatum',
     day: 'Tag', month: 'Monat', year: 'Jahr',
@@ -808,115 +749,115 @@ const TRANSLATIONS = {
     idCard: 'Personalausweis',
     passport: 'Reisepass',
     idNumber: 'Ausweisnummer',
-    address: 'Aktuelle Adresse',
+    address: 'Adresse',
     addressNumber: 'Hausnummer',
-    addressStreet: 'Straßenname',
-    postalCode: 'Postleitzahl',
+    addressStreet: 'Straße',
+    postalCode: 'PLZ',
     city: 'Stadt',
-    motherData: 'Angaben zur Mutter',
-    motherNameDe: 'Name der Mutter auf Deutsch',
-    motherNameAr: 'Name der Mutter auf Arabisch',
-    dowry: 'Brautgabe (Mahr)',
-    dowryEuro: 'Brautgabe in Euro (€)',
-    waliOptions: 'Wali-Optionen',
-    noWali: 'Kein Wali',
-    brideItself: 'Die Braut selbst (sie ist ihr eigener Wali)',
-    noWaliText: 'Kein Wali in diesem Vertrag',
-    brideItselfText: 'Die Braut ist ihr eigener Wali',
-    keInWali: 'Kein Wali',
+    motherData: 'Mutter',
+    motherNameDe: 'Mutter (Deutsch)',
+    motherNameAr: 'Mutter (Arabisch)',
+    dowryTitle: 'Brautgabe-Details',
+    dowryAdvance: 'Vorauszahlung (€)',
+    dowryDeferred: 'Aufgeschoben (€)',
+    dowryNotes: 'Anmerkungen zur Brautgabe',
+    dowryNotesPH: 'Zusätzliche Anmerkungen...',
+    waliIsBride: 'Die Braut selbst ist der Wali',
+    waliIsBrideText: 'Die Braut ist ihr eigener Wali',
+    witnessIsCenter: 'Zeuge vom Zentrum',
+    witnessIsCenterText: 'Zeuge vom Zentrum',
+    previewBtn: '👁 Vorschau',
+    previewParty: 'Vorschau',
+    noData: 'Keine Daten',
+    viewDetails: 'Details anzeigen',
   },
   en: {
     brandName: 'Arresalah Zentrum',
     brandSub: 'ISLAMIC CENTER BERLIN',
     bismillah: 'In the name of Allah, the Most Gracious, the Most Merciful',
-    heroTitle: 'Marriage Contract Registration System',
-    heroSub: 'An electronic platform for easy and accurate registration of contract parties',
+    heroTitle: 'Marriage Contract Registration',
+    heroSub: 'An electronic platform for accurate registration',
     verifyTitle: 'Verify Contract Number',
-    verifySub: 'Enter the contract number to begin filling in the parties data',
+    verifySub: 'Enter the contract number',
     verifyBtn: 'Continue →',
     progressTitle: 'Contract Completion',
-    chooseRole: 'Choose a party to fill their data',
-    chooseRoleSub: 'Click on any party to begin',
+    chooseRole: 'Choose a party',
+    chooseRoleSub: 'Click on any party',
     allComplete: 'All parties completed',
-    sendContract: 'Send Contract to Center',
+    sendContract: 'Send Contract',
     adminPanel: 'Admin Panel',
-    contractCodes: 'Current Contract Codes',
-    currentCodeLabel: 'Contract Code:',
+    contractCodes: 'Available Contract Codes (5)',
+    codesDesc: 'Each code = one full contract (5 parties)',
+    previewCurrent: 'Current Contract Preview',
     dangerZone: '⚠️ Danger Zone',
-    dangerDesc: 'Clear all locally saved data (except the 5 codes)',
+    dangerDesc: 'Clear all local data (except 5 codes)',
     clearData: 'Clear Temporary Data',
-    backToMain: 'Back to Main Page',
-    adminLink: '• Admin / Management Login •',
+    backToMain: 'Back',
+    adminLink: '• Admin •',
     adminLogin: 'Admin Login',
-    adminLoginDesc: 'Enter password to continue',
+    adminLoginDesc: 'Enter password',
     login: 'Login',
     cancel: 'Cancel',
     groom: 'Groom',
     bride: 'Bride',
-    wali: 'Wali (Guardian)',
+    wali: 'Wali',
     witness1: 'Witness 1',
     witness2: 'Witness 2',
-    save: '💾 Save & Continue',
-    saveComplete: '✅ Save & Continue',
+    save: '💾 Save',
+    saveComplete: '✅ Save',
     incomplete: 'Fill required fields',
-    readyToSave: 'Ready to save - click to continue',
-    nameDe: 'Full Name in German',
-    nameAr: 'Name in Arabic',
+    readyToSave: 'Ready to save',
+    nameDe: 'Full Name (German)',
+    nameAr: 'Name (Arabic)',
     birthDate: 'Date of Birth',
     day: 'Day', month: 'Month', year: 'Year',
-    birthCountry: 'Place of Birth - Country',
-    birthRegion: 'Place of Birth - Region',
+    birthCountry: 'Birth Country',
+    birthRegion: 'Birth Region',
     idType: 'ID Type',
     idCard: 'ID Card',
     passport: 'Passport',
     idNumber: 'ID Number',
-    address: 'Current Address',
-    addressNumber: 'Street Number',
-    addressStreet: 'Street Name',
+    address: 'Address',
+    addressNumber: 'Street No.',
+    addressStreet: 'Street',
     postalCode: 'Postal Code',
     city: 'City',
-    motherData: "Mother's Information",
-    motherNameDe: "Mother's Name in German",
-    motherNameAr: "Mother's Name in Arabic",
-    dowry: 'Dowry (Mahr)',
-    dowryEuro: 'Dowry in Euro (€)',
-    waliOptions: 'Wali Options',
-    noWali: 'No Wali',
-    brideItself: 'The bride herself (she is her own Wali)',
-    noWaliText: 'No Wali in this contract',
-    brideItselfText: 'The bride is her own Wali',
-    keInWali: 'No Wali',
+    motherData: 'Mother',
+    motherNameDe: 'Mother (German)',
+    motherNameAr: 'Mother (Arabic)',
+    dowryTitle: 'Dowry Details',
+    dowryAdvance: 'Advance Dowry (€)',
+    dowryDeferred: 'Deferred Dowry (€)',
+    dowryNotes: 'Notes about the Dowry',
+    dowryNotesPH: 'Write any additional notes here...',
+    waliIsBride: 'The bride herself is the Wali',
+    waliIsBrideText: 'The bride is her own Wali',
+    witnessIsCenter: 'Witness from the Center',
+    witnessIsCenterText: 'Witness from the Center',
+    previewBtn: '👁 Preview',
+    previewParty: 'Preview',
+    noData: 'No data yet',
+    viewDetails: 'View details',
   }
 };
 
 let currentLang = localStorage.getItem('lang') || 'ar';
-
-function t(key) {
-  return TRANSLATIONS[currentLang][key] || key;
-}
+function t(key) { return TRANSLATIONS[currentLang][key] || key; }
 
 function setLanguage(lang) {
   currentLang = lang;
   localStorage.setItem('lang', lang);
   document.documentElement.lang = lang;
   document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-  
   document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.dataset.i18n;
-    el.textContent = t(key);
+    el.textContent = t(el.dataset.i18n);
   });
-  
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.lang === lang);
   });
-  
-  // إعادة رسم الصفحات النشطة
-  if (!document.getElementById('inputScreen').classList.contains('hidden')) {
-    renderPartyForm();
-  }
-  if (!document.getElementById('roleScreen').classList.contains('hidden')) {
-    renderRolePicker();
-  }
+  if (!document.getElementById('inputScreen').classList.contains('hidden')) renderPartyForm();
+  if (!document.getElementById('roleScreen').classList.contains('hidden')) renderRolePicker();
+  if (!document.getElementById('adminPanel').classList.contains('hidden')) showAdminPanel();
 }
 
 /* ============================================================
@@ -926,15 +867,15 @@ const PARTY_DEFS = [
   { key: 'groom',    labelKey: 'groom',    icon: '👨', isSpouse: true, isGroom: true },
   { key: 'bride',    labelKey: 'bride',    icon: '👩', isSpouse: true, isGroom: false },
   { key: 'wali',     labelKey: 'wali',     icon: '🧔', isWali: true },
-  { key: 'witness1', labelKey: 'witness1', icon: '👤' },
-  { key: 'witness2', labelKey: 'witness2', icon: '👤' },
+  { key: 'witness1', labelKey: 'witness1', icon: '👤', isWitness: true },
+  { key: 'witness2', labelKey: 'witness2', icon: '👤', isWitness: true },
 ];
 const PARTIES_COUNT = 5;
 
 let currentContractCode = null;
 let currentPartyIndex = 0;
 let contractData = {};
-let contractCodes = []; // 5 أكواد ثابتة للجلسة
+let contractCodes = [];
 
 /* ============================================================
    أدوات
@@ -966,25 +907,24 @@ function emptyParty() {
     addressNumber: '', addressStreet: '',
     postalCode: '', city: '',
     motherNameDe: '', motherNameAr: '',
-    dowry: '',
-    noWali: false,
-    brideItself: false,
+    dowryAdvance: '',      // المهر المقدم
+    dowryDeferred: '',     // المهر المؤخر
+    dowryNotes: '',        // ملاحظات المهر
+    waliIsBride: false,    // خيار الولي
+    witnessIsCenter: false // خيار الشاهد (طرف المركز)
   };
 }
-
 function generateRandomCode() {
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
   let code = '';
   for (let i = 0; i < 6; i++) code += chars[Math.floor(Math.random() * chars.length)];
   return code;
 }
-
 function generateCode() {
   const code = generateRandomCode();
   document.getElementById('contractCodeInput').value = code;
   toast('تم توليد الكود: ' + code, 'success');
 }
-
 function isValidDate(day, month, year) {
   if (!day || !month || !year) return true;
   const d = parseInt(day), m = parseInt(month), y = parseInt(year);
@@ -992,6 +932,7 @@ function isValidDate(day, month, year) {
   const date = new Date(y, m - 1, d);
   return date.getDate() === d && date.getMonth() === m - 1 && date.getFullYear() === y;
 }
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
 /* ============================================================
    الأكواد الثابتة
@@ -1002,42 +943,29 @@ function loadCodes() {
     if (raw) {
       contractCodes = JSON.parse(raw);
       if (contractCodes.length !== 5) throw new Error('invalid');
-    } else {
-      throw new Error('no codes');
-    }
+    } else { throw new Error('no codes'); }
   } catch(e) {
-    // توليد 5 أكواد جديدة
     contractCodes = [];
     for (let i = 0; i < 5; i++) contractCodes.push(generateRandomCode());
     localStorage.setItem('contract_codes', JSON.stringify(contractCodes));
   }
 }
 
-function getPartyCodeStatus() {
-  // حالة كل كود من الـ 5
-  const status = {};
-  PARTY_DEFS.forEach((def, idx) => {
-    const code = contractCodes[idx];
-    const saved = localStorage.getItem('party_saved_' + code);
-    status[code] = {
-      party: def,
-      saved: saved ? JSON.parse(saved) : null,
-      completed: saved ? true : false,
-    };
-  });
-  return status;
+function getContractStatus() {
+  return contractCodes.map((code, idx) => ({
+    code, index: idx + 1,
+    finished: localStorage.getItem('contract_finished_' + code) ? true : false,
+  }));
 }
 
 /* ============================================================
-   الحفظ التلقائي
+   الحفظ/الاسترجاع
 ============================================================ */
 function saveToStorage() {
   if (!currentContractCode) return;
-  try {
-    localStorage.setItem('draft_' + currentContractCode, JSON.stringify(contractData));
-  } catch(e) { console.warn('save failed', e); }
+  try { localStorage.setItem('draft_' + currentContractCode, JSON.stringify(contractData)); }
+  catch(e) { console.warn(e); }
 }
-
 function restoreFromStorage() {
   if (!currentContractCode) return false;
   try {
@@ -1052,7 +980,6 @@ function restoreFromStorage() {
   } catch(e) { console.warn(e); }
   return false;
 }
-
 function clearDraftStorage() {
   if (!currentContractCode) return;
   localStorage.removeItem('draft_' + currentContractCode);
@@ -1066,6 +993,12 @@ function verifyCode() {
   if (!input) return toast('أدخل رقم العقد', 'error');
   if (input.length !== 6) return toast('رقم العقد يجب أن يكون 6 خانات بالضبط', 'error');
   if (!/^[A-Z0-9]{6}$/.test(input)) return toast('رقم العقد يجب أن يحتوي على أحرف وأرقام إنجليزية فقط', 'error');
+  if (!contractCodes.includes(input)) {
+    return toast('رقم العقد غير معتمد. تأكد من الكود الذي أعطاك إياه المركز.', 'error');
+  }
+  if (localStorage.getItem('contract_finished_' + input)) {
+    return toast('هذا العقد تم إرساله مسبقاً', 'error');
+  }
 
   currentContractCode = input;
   currentPartyIndex = 0;
@@ -1078,15 +1011,7 @@ function verifyCode() {
   document.getElementById('verifyScreen').classList.add('hidden');
   document.getElementById('roleScreen').classList.remove('hidden');
   renderRolePicker();
-}
-
-function backToVerify() {
-  document.getElementById('roleScreen').classList.add('hidden');
-  document.getElementById('inputScreen').classList.add('hidden');
-  document.getElementById('verifyScreen').classList.remove('hidden');
-  document.getElementById('contractCodeInput').value = '';
-  contractData = {};
-  currentContractCode = null;
+  scrollToTop();
 }
 
 /* ============================================================
@@ -1094,10 +1019,8 @@ function backToVerify() {
 ============================================================ */
 function renderRolePicker() {
   updateProgress('progressCircleRole', 'progressTextRole', 'progressSubtextRole');
-  
   const picker = document.getElementById('rolePicker');
   picker.innerHTML = '';
-  
   PARTY_DEFS.forEach((def, idx) => {
     const tab = document.createElement('div');
     tab.className = 'party-tab';
@@ -1108,23 +1031,28 @@ function renderRolePicker() {
       document.getElementById('roleScreen').classList.add('hidden');
       document.getElementById('inputScreen').classList.remove('hidden');
       renderPartyForm();
+      scrollToTop();
     };
     picker.appendChild(tab);
   });
-
   checkAllDone();
 }
 
 function isPartyComplete(p, def) {
   if (!p) return false;
-  if (def.isWali && (p.noWali || p.brideItself)) return true;
+  // الولي: مكتمل إذا فعّل "الولي هي الزوجة نفسها"
+  if (def.isWali) {
+    if (p.waliIsBride) return true;
+  }
+  // الشاهد: مكتمل إذا فعّل "الشاهد طرف المركز"
+  if (def.isWitness) {
+    if (p.witnessIsCenter) return true;
+  }
+  // باقي الأطراف: الاسم الإلزامي + اسم الأم للزوجين
   if (!p.nameDe || !p.nameDe.trim()) return false;
   if (def.isSpouse && (!p.motherNameDe || !p.motherNameDe.trim())) return false;
   if (p.birthDay || p.birthMonth || p.birthYear) {
     if (!isValidDate(p.birthDay, p.birthMonth, p.birthYear)) return false;
-  }
-  if (def.isGroom && p.dowry) {
-    if (isNaN(parseFloat(p.dowry)) || parseFloat(p.dowry) < 0) return false;
   }
   return true;
 }
@@ -1162,37 +1090,47 @@ function buildPartyForm(def, p) {
   const spouse = def.isSpouse;
   const groom = def.isGroom;
   const isWali = def.isWali;
+  const isWitness = def.isWitness;
 
-  // خيارات الولي
-  if (isWali) {
-    if (p.noWali || p.brideItself) {
-      return `
-        <div class="form-grid">
-          <div class="section-title">${t('waliOptions')}</div>
-          <div class="wali-options">
-            <div class="wali-option-item">
-              <input type="checkbox" id="noWaliCheck" ${p.noWali?'checked':''}>
-              <label for="noWaliCheck">${t('noWali')}</label>
-            </div>
-            <div class="wali-option-item">
-              <input type="checkbox" id="brideItselfCheck" ${p.brideItself?'checked':''}>
-              <label for="brideItselfCheck">${t('brideItself')}</label>
-            </div>
-          </div>
-          <div class="wali-info-box">
-            ${p.noWali ? '✓ ' + t('noWaliText') : '✓ ' + t('brideItselfText')}
-            <small>${p.noWali ? t('keInWali') : ''}</small>
-          </div>
+  /* ============ الولي: خيار واحد ============ */
+  if (isWali && p.waliIsBride) {
+    return `
+      <div class="form-grid">
+        <div class="section-title">${t('wali')}</div>
+        <div class="special-box">
+          <input type="checkbox" id="waliIsBrideCheck" checked>
+          <label for="waliIsBrideCheck">${t('waliIsBride')}</label>
         </div>
-        <div class="save-btn-wrap">
-          <button class="btn save-btn complete" onclick="savePartyAndReturn()">
-            ${t('saveComplete')}
-          </button>
-          <div class="save-hint">${t('readyToSave')}</div>
-        </div>`;
-    }
+        <div class="special-info-box">✓ ${t('waliIsBrideText')}</div>
+      </div>
+      <div class="save-btn-wrap">
+        <button class="btn save-btn complete" onclick="savePartyAndReturn()">
+          ${t('saveComplete')}
+        </button>
+        <div class="save-hint">${t('readyToSave')}</div>
+      </div>`;
   }
 
+  /* ============ الشاهد: خيار "طرف المركز" ============ */
+  if (isWitness && p.witnessIsCenter) {
+    return `
+      <div class="form-grid">
+        <div class="section-title">${t(def.labelKey)}</div>
+        <div class="special-box">
+          <input type="checkbox" id="witnessIsCenterCheck" checked>
+          <label for="witnessIsCenterCheck">${t('witnessIsCenter')}</label>
+        </div>
+        <div class="special-info-box">✓ ${t('witnessIsCenterText')}</div>
+      </div>
+      <div class="save-btn-wrap">
+        <button class="btn save-btn complete" onclick="savePartyAndReturn()">
+          ${t('saveComplete')}
+        </button>
+        <div class="save-hint">${t('readyToSave')}</div>
+      </div>`;
+  }
+
+  /* ============ النموذج العادي ============ */
   let html = `<div class="form-grid">
     <div class="section-title">${def.icon} ${t(def.labelKey)}</div>
 
@@ -1272,27 +1210,43 @@ function buildPartyForm(def, p) {
     `;
   }
 
+  /* ============ المهر - 3 خانات ============ */
   if (groom) {
     html += `
-      <div class="section-title">${t('dowry')}</div>
-      <div class="field full">
-        <label>${t('dowryEuro')}</label>
-        <input type="number" min="0" step="1" data-k="dowry" value="${esc(p.dowry)}" placeholder="0">
+      <div class="dowry-box">
+        <div class="dowry-box-title">💰 ${t('dowryTitle')}</div>
+        <div class="dowry-fields">
+          <div class="field">
+            <label>${t('dowryAdvance')}</label>
+            <input type="number" min="0" step="1" data-k="dowryAdvance" value="${esc(p.dowryAdvance)}" placeholder="0">
+          </div>
+          <div class="field">
+            <label>${t('dowryDeferred')}</label>
+            <input type="number" min="0" step="1" data-k="dowryDeferred" value="${esc(p.dowryDeferred)}" placeholder="0">
+          </div>
+          <div class="field field-full">
+            <label>${t('dowryNotes')}</label>
+            <textarea data-k="dowryNotes" placeholder="${t('dowryNotesPH')}">${esc(p.dowryNotes)}</textarea>
+          </div>
+        </div>
       </div>
     `;
   }
 
   if (isWali) {
     html += `
-      <div class="wali-options">
-        <div class="wali-option-item">
-          <input type="checkbox" id="noWaliCheck" ${p.noWali?'checked':''}>
-          <label for="noWaliCheck">${t('noWali')}</label>
-        </div>
-        <div class="wali-option-item">
-          <input type="checkbox" id="brideItselfCheck" ${p.brideItself?'checked':''}>
-          <label for="brideItselfCheck">${t('brideItself')}</label>
-        </div>
+      <div class="special-box">
+        <input type="checkbox" id="waliIsBrideCheck" ${p.waliIsBride?'checked':''}>
+        <label for="waliIsBrideCheck">${t('waliIsBride')}</label>
+      </div>
+    `;
+  }
+
+  if (isWitness) {
+    html += `
+      <div class="special-box">
+        <input type="checkbox" id="witnessIsCenterCheck" ${p.witnessIsCenter?'checked':''}>
+        <label for="witnessIsCenterCheck">${t('witnessIsCenter')}</label>
       </div>
     `;
   }
@@ -1318,20 +1272,19 @@ function attachFormHandlers(partyKey) {
     });
   });
 
-  const noWaliCheck = document.getElementById('noWaliCheck');
-  if (noWaliCheck) {
-    noWaliCheck.addEventListener('change', () => {
-      party.noWali = noWaliCheck.checked;
-      if (noWaliCheck.checked) party.brideItself = false;
+  const waliIsBrideCheck = document.getElementById('waliIsBrideCheck');
+  if (waliIsBrideCheck) {
+    waliIsBrideCheck.addEventListener('change', () => {
+      party.waliIsBride = waliIsBrideCheck.checked;
       saveToStorage();
       renderPartyForm();
     });
   }
-  const brideItselfCheck = document.getElementById('brideItselfCheck');
-  if (brideItselfCheck) {
-    brideItselfCheck.addEventListener('change', () => {
-      party.brideItself = brideItselfCheck.checked;
-      if (brideItselfCheck.checked) party.noWali = false;
+
+  const witnessIsCenterCheck = document.getElementById('witnessIsCenterCheck');
+  if (witnessIsCenterCheck) {
+    witnessIsCenterCheck.addEventListener('change', () => {
+      party.witnessIsCenter = witnessIsCenterCheck.checked;
       saveToStorage();
       renderPartyForm();
     });
@@ -1352,18 +1305,16 @@ function updateSaveButtonState(def, party) {
 function savePartyAndReturn() {
   const def = PARTY_DEFS[currentPartyIndex];
   const party = contractData[def.key];
-  
   if (!isPartyComplete(party, def)) {
     toast('❌ ' + t('incomplete'), 'error');
     return;
   }
-  
   saveToStorage();
   toast('✓ ' + t(def.labelKey) + ' — تم الحفظ', 'success');
-  
   document.getElementById('inputScreen').classList.add('hidden');
   document.getElementById('roleScreen').classList.remove('hidden');
   renderRolePicker();
+  scrollToTop();
 }
 
 /* ============================================================
@@ -1373,7 +1324,8 @@ async function submitAllParties() {
   const errors = [];
   for (const def of PARTY_DEFS) {
     const p = contractData[def.key];
-    if (def.isWali && (p.noWali || p.brideItself)) continue;
+    if (def.isWali && p.waliIsBride) continue;
+    if (def.isWitness && p.witnessIsCenter) continue;
     if (!p.nameDe || !p.nameDe.trim()) errors.push(t(def.labelKey) + ': ' + t('nameDe'));
     if (def.isSpouse && (!p.motherNameDe || !p.motherNameDe.trim())) 
       errors.push(t(def.labelKey) + ': ' + t('motherNameDe'));
@@ -1381,10 +1333,7 @@ async function submitAllParties() {
       if (!isValidDate(p.birthDay, p.birthMonth, p.birthYear)) 
         errors.push(t(def.labelKey) + ': ' + t('birthDate'));
     }
-    if (def.isGroom && p.dowry && (isNaN(parseFloat(p.dowry)) || parseFloat(p.dowry) < 0)) 
-      errors.push(t(def.labelKey) + ': ' + t('dowry'));
   }
-  
   if (errors.length) {
     toast('❌ ' + errors.length + ' خطأ', 'error');
     setTimeout(() => alert(errors.join('\n')), 300);
@@ -1399,15 +1348,16 @@ async function submitAllParties() {
   const w1 = contractData.witness1, w2 = contractData.witness2;
   const idTypeAr = t => t === 'passport' ? 'Passport' : 'ID';
 
-  let waliStatus = 'N/A';
-  if (w.noWali) waliStatus = 'No Wali (Kein Wali)';
-  else if (w.brideItself) waliStatus = 'Bride herself';
-  else waliStatus = 'Wali present';
+  const waliStatus = w.waliIsBride ? 'Bride is her own Wali' : 'Wali present';
+  const witness1Status = w1.witnessIsCenter ? 'Center Witness' : 'Witness present';
+  const witness2Status = w2.witnessIsCenter ? 'Center Witness' : 'Witness present';
 
   const payload = {
     to_email: ADMIN_EMAIL,
     contract_code: currentContractCode,
     sent_at: new Date().toLocaleString('de-DE'),
+
+    // الزوج
     groom_name_de: g.nameDe || '—', groom_name_ar: g.nameAr || '—',
     groom_birth: getBirthDate(g),
     groom_birth_region: g.birthRegion || '—', groom_birth_country: g.birthCountry || '—',
@@ -1415,7 +1365,11 @@ async function submitAllParties() {
     groom_address: `${g.addressStreet||''} ${g.addressNumber||''}`.trim() || '—',
     groom_postal: g.postalCode || '—', groom_city: g.city || '—',
     groom_mother_de: g.motherNameDe || '—', groom_mother_ar: g.motherNameAr || '—',
-    groom_dowry: g.dowry || '—',
+    groom_dowry_advance: g.dowryAdvance || '—',
+    groom_dowry_deferred: g.dowryDeferred || '—',
+    groom_dowry_notes: g.dowryNotes || '—',
+
+    // الزوجة
     bride_name_de: b.nameDe || '—', bride_name_ar: b.nameAr || '—',
     bride_birth: getBirthDate(b),
     bride_birth_region: b.birthRegion || '—', bride_birth_country: b.birthCountry || '—',
@@ -1423,36 +1377,60 @@ async function submitAllParties() {
     bride_address: `${b.addressStreet||''} ${b.addressNumber||''}`.trim() || '—',
     bride_postal: b.postalCode || '—', bride_city: b.city || '—',
     bride_mother_de: b.motherNameDe || '—', bride_mother_ar: b.motherNameAr || '—',
+
+    // الولي
     wali_status: waliStatus,
-    wali_name_de: (w.noWali || w.brideItself) ? '—' : (w.nameDe || '—'),
-    wali_name_ar: (w.noWali || w.brideItself) ? '—' : (w.nameAr || '—'),
-    wali_birth: (w.noWali || w.brideItself) ? '—' : getBirthDate(w),
-    wali_birth_region: (w.noWali || w.brideItself) ? '—' : (w.birthRegion || '—'),
-    wali_birth_country: (w.noWali || w.brideItself) ? '—' : (w.birthCountry || '—'),
-    wali_id_type: (w.noWali || w.brideItself) ? '—' : idTypeAr(w.idType),
-    wali_id_number: (w.noWali || w.brideItself) ? '—' : (w.idNumber || '—'),
-    wali_address: (w.noWali || w.brideItself) ? '—' : `${w.addressStreet||''} ${w.addressNumber||''}`.trim() || '—',
-    wali_postal: (w.noWali || w.brideItself) ? '—' : (w.postalCode || '—'),
-    wali_city: (w.noWali || w.brideItself) ? '—' : (w.city || '—'),
-    w1_name_de: w1.nameDe || '—', w1_name_ar: w1.nameAr || '—',
-    w1_birth: getBirthDate(w1),
-    w1_birth_region: w1.birthRegion || '—', w1_birth_country: w1.birthCountry || '—',
-    w1_id_type: idTypeAr(w1.idType), w1_id_number: w1.idNumber || '—',
-    w1_address: `${w1.addressStreet||''} ${w1.addressNumber||''}`.trim() || '—',
-    w1_postal: w1.postalCode || '—', w1_city: w1.city || '—',
-    w2_name_de: w2.nameDe || '—', w2_name_ar: w2.nameAr || '—',
-    w2_birth: getBirthDate(w2),
-    w2_birth_region: w2.birthRegion || '—', w2_birth_country: w2.birthCountry || '—',
-    w2_id_type: idTypeAr(w2.idType), w2_id_number: w2.idNumber || '—',
-    w2_address: `${w2.addressStreet||''} ${w2.addressNumber||''}`.trim() || '—',
-    w2_postal: w2.postalCode || '—', w2_city: w2.city || '—',
+    wali_name_de: w.waliIsBride ? '—' : (w.nameDe || '—'),
+    wali_name_ar: w.waliIsBride ? '—' : (w.nameAr || '—'),
+    wali_birth: w.waliIsBride ? '—' : getBirthDate(w),
+    wali_birth_region: w.waliIsBride ? '—' : (w.birthRegion || '—'),
+    wali_birth_country: w.waliIsBride ? '—' : (w.birthCountry || '—'),
+    wali_id_type: w.waliIsBride ? '—' : idTypeAr(w.idType),
+    wali_id_number: w.waliIsBride ? '—' : (w.idNumber || '—'),
+    wali_address: w.waliIsBride ? '—' : `${w.addressStreet||''} ${w.addressNumber||''}`.trim() || '—',
+    wali_postal: w.waliIsBride ? '—' : (w.postalCode || '—'),
+    wali_city: w.waliIsBride ? '—' : (w.city || '—'),
+
+    // الشاهد الأول
+    w1_status: witness1Status,
+    w1_name_de: w1.witnessIsCenter ? '—' : (w1.nameDe || '—'),
+    w1_name_ar: w1.witnessIsCenter ? '—' : (w1.nameAr || '—'),
+    w1_birth: w1.witnessIsCenter ? '—' : getBirthDate(w1),
+    w1_birth_region: w1.witnessIsCenter ? '—' : (w1.birthRegion || '—'),
+    w1_birth_country: w1.witnessIsCenter ? '—' : (w1.birthCountry || '—'),
+    w1_id_type: w1.witnessIsCenter ? '—' : idTypeAr(w1.idType),
+    w1_id_number: w1.witnessIsCenter ? '—' : (w1.idNumber || '—'),
+    w1_address: w1.witnessIsCenter ? '—' : `${w1.addressStreet||''} ${w1.addressNumber||''}`.trim() || '—',
+    w1_postal: w1.witnessIsCenter ? '—' : (w1.postalCode || '—'),
+    w1_city: w1.witnessIsCenter ? '—' : (w1.city || '—'),
+
+    // الشاهد الثاني
+    w2_status: witness2Status,
+    w2_name_de: w2.witnessIsCenter ? '—' : (w2.nameDe || '—'),
+    w2_name_ar: w2.witnessIsCenter ? '—' : (w2.nameAr || '—'),
+    w2_birth: w2.witnessIsCenter ? '—' : getBirthDate(w2),
+    w2_birth_region: w2.witnessIsCenter ? '—' : (w2.birthRegion || '—'),
+    w2_birth_country: w2.witnessIsCenter ? '—' : (w2.birthCountry || '—'),
+    w2_id_type: w2.witnessIsCenter ? '—' : idTypeAr(w2.idType),
+    w2_id_number: w2.witnessIsCenter ? '—' : (w2.idNumber || '—'),
+    w2_address: w2.witnessIsCenter ? '—' : `${w2.addressStreet||''} ${w2.addressNumber||''}`.trim() || '—',
+    w2_postal: w2.witnessIsCenter ? '—' : (w2.postalCode || '—'),
+    w2_city: w2.witnessIsCenter ? '—' : (w2.city || '—'),
   };
 
   try {
     await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, payload);
     toast('✓ تم إرسال العقد بنجاح', 'success');
+
+    // ضع علامة "منتهي" لهذا الكود
+    localStorage.setItem('contract_finished_' + currentContractCode, JSON.stringify({
+      finishedAt: Date.now(),
+      data: contractData
+    }));
+
+    // امسح المسودة
     clearDraftStorage();
-    
+
     document.getElementById('roleScreen').innerHTML = `
       <div class="success-box">
         <span class="big-check">✓</span>
@@ -1462,6 +1440,7 @@ async function submitAllParties() {
           <button class="btn gold small" onclick="location.reload()">تسجيل عقد جديد</button>
         </div>
       </div>`;
+    scrollToTop();
   } catch (err) {
     console.error('EmailJS Error:', err);
     toast('فشل الإرسال، حاول مجدداً', 'error');
@@ -1492,40 +1471,112 @@ function showAdminPanel() {
   document.getElementById('roleScreen').classList.add('hidden');
   document.getElementById('inputScreen').classList.add('hidden');
   document.getElementById('adminPanel').classList.remove('hidden');
-  
-  // اعرض كود العقد الحالي
-  const codeEl = document.getElementById('adminContractCode');
-  codeEl.textContent = currentContractCode || '— لا يوجد عقد نشط —';
-  
-  // اعرض الأكواد الخمسة وحالتها
+  renderAdmin();
+  scrollToTop();
+}
+
+function renderAdmin() {
+  // 1. اعرض الأكواد الخمسة وحالتها
   const list = document.getElementById('adminCodeList');
   list.innerHTML = '';
-  const status = getPartyCodeStatus();
-  
-  PARTY_DEFS.forEach((def, idx) => {
-    const code = contractCodes[idx];
-    const item = document.createElement('div');
-    item.className = 'code-item' + (status[code].completed ? ' done' : '');
-    item.innerHTML = `
-      <span class="code-val">${code}</span>
-      <span class="party-name">${def.icon} ${t(def.labelKey)}</span>
-      <span class="status-badge ${status[code].completed ? 'done' : 'pending'}">
-        ${status[code].completed ? '✓ ' + (currentLang === 'ar' ? 'مكتمل' : currentLang === 'de' ? 'Fertig' : 'Done') : '⏳ ...'}
+  const status = getContractStatus();
+  status.forEach((item, idx) => {
+    const div = document.createElement('div');
+    div.className = 'code-item' + (item.finished ? ' done' : '');
+    div.innerHTML = `
+      <span class="code-val">${item.code}</span>
+      <span class="party-name">عقد #${item.index}</span>
+      <span class="status-badge ${item.finished ? 'done' : 'pending'}">
+        ${item.finished ? '✓ ' + (currentLang === 'ar' ? 'مُرسل' : currentLang === 'de' ? 'Gesendet' : 'Sent') : '⏳ ' + (currentLang === 'ar' ? 'متاح' : currentLang === 'de' ? 'Verfügbar' : 'Available')}
       </span>
+      <button class="btn tiny ${item.finished ? 'green' : 'gray'}" onclick="previewContract('${item.code}')">
+        👁 ${t('viewDetails')}
+      </button>
     `;
-    list.appendChild(item);
+    list.appendChild(div);
   });
+
+  // 2. اعرض معاينة العقد الحالي
+  const content = document.getElementById('currentContractContent');
+  if (!currentContractCode || !contractData.groom) {
+    content.innerHTML = `<p style="text-align:center; color:var(--text-gray); font-size:13px; padding:15px;">${t('noData')}</p>`;
+  } else {
+    content.innerHTML = buildContractPreview();
+  }
+}
+
+function buildContractPreview() {
+  const g = contractData.groom, b = contractData.bride, w = contractData.wali;
+  const w1 = contractData.witness1, w2 = contractData.witness2;
+
+  let html = `<div class="preview-data">`;
+  html += `<div class="row"><strong>${t('groom')}</strong><span>${g.nameDe || '—'}</span></div>`;
+  html += `<div class="row"><strong>${t('bride')}</strong><span>${b.nameDe || '—'}</span></div>`;
+  if (w.waliIsBride) {
+    html += `<div class="row"><strong>${t('wali')}</strong><span>${t('waliIsBride')}</span></div>`;
+  } else {
+    html += `<div class="row"><strong>${t('wali')}</strong><span>${w.nameDe || '—'}</span></div>`;
+  }
+  if (w1.witnessIsCenter) {
+    html += `<div class="row"><strong>${t('witness1')}</strong><span>${t('witnessIsCenter')}</span></div>`;
+  } else {
+    html += `<div class="row"><strong>${t('witness1')}</strong><span>${w1.nameDe || '—'}</span></div>`;
+  }
+  if (w2.witnessIsCenter) {
+    html += `<div class="row"><strong>${t('witness2')}</strong><span>${t('witnessIsCenter')}</span></div>`;
+  } else {
+    html += `<div class="row"><strong>${t('witness2')}</strong><span>${w2.nameDe || '—'}</span></div>`;
+  }
+  html += `<div class="row"><strong>${t('dowryAdvance')}</strong><span>${g.dowryAdvance || '—'} €</span></div>`;
+  html += `<div class="row"><strong>${t('dowryDeferred')}</strong><span>${g.dowryDeferred || '—'} €</span></div>`;
+  html += `</div>`;
+  return html;
+}
+
+function previewContract(code) {
+  const raw = localStorage.getItem('contract_finished_' + code);
+  if (!raw) {
+    toast('هذا العقد لم يُرسل بعد', 'error');
+    return;
+  }
+  const saved = JSON.parse(raw);
+  const data = saved.data || {};
+  const g = data.groom || {}, b = data.bride || {}, w = data.wali || {};
+  const w1 = data.witness1 || {}, w2 = data.witness2 || {};
+
+  let html = `
+    <div class="row"><strong>${t('groom')} (DE)</strong><span>${g.nameDe || '—'}</span></div>
+    <div class="row"><strong>${t('groom')} (AR)</strong><span>${g.nameAr || '—'}</span></div>
+    <div class="row"><strong>${t('bride')} (DE)</strong><span>${b.nameDe || '—'}</span></div>
+    <div class="row"><strong>${t('bride')} (AR)</strong><span>${b.nameAr || '—'}</span></div>
+    <div class="row"><strong>${t('wali')}</strong><span>${w.waliIsBride ? t('waliIsBride') : (w.nameDe || '—')}</span></div>
+    <div class="row"><strong>${t('witness1')}</strong><span>${w1.witnessIsCenter ? t('witnessIsCenter') : (w1.nameDe || '—')}</span></div>
+    <div class="row"><strong>${t('witness2')}</strong><span>${w2.witnessIsCenter ? t('witnessIsCenter') : (w2.nameDe || '—')}</span></div>
+    <div class="row"><strong>${t('dowryAdvance')}</strong><span>${g.dowryAdvance || '—'} €</span></div>
+    <div class="row"><strong>${t('dowryDeferred')}</strong><span>${g.dowryDeferred || '—'} €</span></div>
+    <div class="row"><strong>${t('dowryNotes')}</strong><span>${g.dowryNotes || '—'}</span></div>
+  `;
+  document.getElementById('previewTitle').textContent = t('previewParty') + ' — ' + code;
+  document.getElementById('previewContent').innerHTML = html;
+  document.getElementById('previewModal').classList.remove('hidden');
+}
+
+function closePreviewModal() {
+  document.getElementById('previewModal').classList.add('hidden');
 }
 
 function closeAdmin() {
   document.getElementById('adminPanel').classList.add('hidden');
   document.getElementById('verifyScreen').classList.remove('hidden');
+  scrollToTop();
 }
 
+/* ============================================================
+   مسح الذاكرة
+============================================================ */
 function confirmClearStorage() {
   const pw = prompt('🔐 أدخل كلمة سر مسح البيانات:');
   if (pw !== CLEAR_PASSWORD) return toast('كلمة المرور خاطئة', 'error');
-  
   if (!confirm('⚠️ هل أنت متأكد؟ سيتم مسح جميع البيانات المؤقتة (ما عدا الأكواد 5)')) return;
   
   // احذف كل شيء ما عدا contract_codes و lang
@@ -1539,12 +1590,12 @@ function confirmClearStorage() {
     }
   });
   
-  toast(`تم مسح ${cleared} عنصر — الأكواد محفوظة`, 'success');
-  showAdminPanel();
+  toast(`✅ تم مسح ${cleared} عنصر — الأكواد الـ5 محفوظة`, 'success');
+  renderAdmin();
 }
 
 /* ============================================================
-   الأحداث
+   الأحداث والتهيئة
 ============================================================ */
 document.getElementById('contractCodeInput').addEventListener('keydown', e => {
   if (e.key === 'Enter') verifyCode();
@@ -1553,9 +1604,6 @@ document.getElementById('pwInput').addEventListener('keydown', e => {
   if (e.key === 'Enter') checkPw();
 });
 
-/* ============================================================
-   التهيئة
-============================================================ */
 loadCodes();
 setLanguage(currentLang);
 </script>
