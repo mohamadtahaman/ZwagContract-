@@ -19,7 +19,6 @@
     --text-gray: #6b6b6b;
     --border: #e0ddd5;
     --gray-light: #f5f5f5;
-    --gray-mid: #d0d0d0;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -28,7 +27,6 @@
     color: var(--text-dark); line-height: 1.6;
   }
 
-  /* ============ الشريط العلوي ============ */
   .topbar {
     background: var(--green-dark); color: #fff;
     padding: 6px 20px; font-size: 12px;
@@ -48,7 +46,6 @@
   .lang-btn:hover { background: rgba(255,255,255,0.1); }
   .lang-btn.active { background: var(--gold); color: var(--green-dark); }
 
-  /* ============ الهيدر ============ */
   header {
     background: #fff; border-bottom: 3px solid var(--green-dark);
     padding: 18px 30px; display: flex;
@@ -79,7 +76,6 @@
   }
   .header-info strong { color: var(--green-dark); }
 
-  /* ============ الهيرو ============ */
   .hero {
     background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
     color: #fff; text-align: center;
@@ -104,7 +100,6 @@
     margin: 20px auto 0; border-radius: 2px;
   }
 
-  /* ============ البطاقة ============ */
   .container {
     max-width: 950px; margin: -30px auto 30px;
     background: #fff; border-radius: 12px;
@@ -112,7 +107,6 @@
     position: relative; z-index: 2; border: 1px solid var(--border);
   }
 
-  /* ============ شاشة التحقق ============ */
   #verifyScreen { text-align: center; padding: 20px 10px 30px; }
   #verifyScreen .icon-circle {
     width: 80px; height: 80px; border-radius: 50%;
@@ -143,7 +137,6 @@
     display: flex; align-items: center; justify-content: center; gap: 6px;
   }
 
-  /* ============ الأزرار ============ */
   .btn {
     background: var(--green-dark); color: #fff;
     border: none; padding: 13px 30px; border-radius: 8px;
@@ -199,7 +192,6 @@
   }
   .save-hint { font-size: 12px; color: var(--text-gray); margin-top: 8px; }
 
-  /* ============ تبويبات الأطراف ============ */
   .party-tabs {
     display: grid; grid-template-columns: repeat(5, 1fr);
     gap: 8px; margin-bottom: 22px;
@@ -232,7 +224,6 @@
   .party-tab.active.done { background: var(--green-dark); color: #fff; }
   .party-tab.active.done::after { background: var(--gold); color: var(--green-dark); }
 
-  /* ============ دائرة التقدم ============ */
   .progress-section {
     display: flex; align-items: center; gap: 20px;
     padding: 15px 20px; background: var(--cream);
@@ -256,7 +247,6 @@
   .progress-text h4 { font-size: 15px; color: var(--green-dark); margin-bottom: 3px; }
   .progress-text p { font-size: 12px; color: var(--text-gray); }
 
-  /* ============ النموذج ============ */
   .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .form-grid .full { grid-column: 1 / -1; }
   .field label {
@@ -290,7 +280,6 @@
     background: var(--gold); border-radius: 2px;
   }
 
-  /* ============ صندوق اختيار خاص ============ */
   .special-box {
     grid-column: 1 / -1;
     padding: 16px;
@@ -316,7 +305,6 @@
     font-size: 17px; font-weight: 700; color: var(--green-dark);
   }
 
-  /* ============ المهر ============ */
   .dowry-box {
     grid-column: 1 / -1;
     padding: 18px;
@@ -336,7 +324,6 @@
   }
   .dowry-fields .field-full { grid-column: 1 / -1; }
 
-  /* ============ النجاح ============ */
   .success-box {
     text-align: center; padding: 50px 20px;
     background: linear-gradient(135deg, #e8f3ed, #f0f9f3);
@@ -367,7 +354,6 @@
   }
   footer .footer-gold { color: var(--gold-light); font-weight: 700; }
 
-  /* ============ Toast ============ */
   .toast {
     position: fixed; top: 20px; left: 50%;
     transform: translateX(-50%);
@@ -381,7 +367,6 @@
   .toast.error { background: #a8332a; border-right-color: #f0a500; }
   .toast.success { background: var(--green-dark); border-right-color: var(--gold); }
 
-  /* ============ Modal ============ */
   .modal-overlay {
     position: fixed; inset: 0; background: rgba(0,0,0,0.6);
     display: flex; align-items: center; justify-content: center;
@@ -415,12 +400,11 @@
   .help-list .contact-line:last-child { border-bottom: none; }
 
   /* ============================================================
-     ============ لوحة الإدارة - كلاسيكية ============
+     لوحة الإدارة - كلاسيكية
   ============================================================ */
   .admin-classic {
     background: #fff;
     border: 1px solid #ccc;
-    font-family: 'Tajawal', sans-serif;
   }
   .admin-classic-header {
     background: #f0f0f0;
@@ -459,7 +443,6 @@
     color: #333;
   }
 
-  /* جدول الأكواد - كلاسيكي */
   .admin-table {
     width: 100%;
     border-collapse: collapse;
@@ -512,7 +495,6 @@
     background: #ddd;
   }
 
-  /* منطقة الخطر - كلاسيكية */
   .danger-classic {
     border: 1px solid #999;
     background: #f8f8f8;
@@ -553,8 +535,16 @@
   .btn-classic.danger:hover {
     background: #e8d0d0;
   }
+  .btn-classic.primary {
+    background: #e8f0ec;
+    border-color: var(--green-dark);
+    color: var(--green-dark);
+    font-weight: 700;
+  }
+  .btn-classic.primary:hover {
+    background: #d5e5dd;
+  }
 
-  /* ============ Responsive ============ */
   @media (max-width: 720px) {
     .party-tabs { grid-template-columns: repeat(3, 1fr); }
     .form-grid { grid-template-columns: 1fr; }
@@ -580,7 +570,6 @@
 </head>
 <body>
 
-<!-- الشريط العلوي -->
 <div class="topbar">
   <div>🕌 Arresalah e.V. — Berlin</div>
   <div class="lang-switcher">
@@ -590,7 +579,6 @@
   </div>
 </div>
 
-<!-- الهيدر -->
 <header>
   <div class="brand">
     <div class="brand-logo">
@@ -612,7 +600,6 @@
   </div>
 </header>
 
-<!-- الهيرو -->
 <section class="hero">
   <div class="hero-content">
     <div class="bismillah" data-i18n="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
@@ -622,21 +609,16 @@
   </div>
 </section>
 
-<!-- البطاقة -->
 <div class="container">
 
-  <!-- شاشة التحقق -->
   <div id="verifyScreen">
     <div class="icon-circle">🔐</div>
     <h2 data-i18n="verifyTitle">التحقق من رقم العقد</h2>
     <p class="subtitle" data-i18n="verifySub">أدخل رقم العقد للبدء في تعبئة بيانات الأطراف</p>
-
     <input type="text" id="contractCodeInput" placeholder="XXXXXX" maxlength="6">
-
     <p class="helper-text">
       💡 <span data-i18n="helperText">رقم العقد يُمنح لكم من المركز عند تسجيل العقد</span>
     </p>
-
     <br>
     <button class="btn gold" onclick="verifyCode()" data-i18n="verifyBtn">متابعة ←</button>
     <br>
@@ -645,7 +627,6 @@
     </button>
   </div>
 
-  <!-- شاشة اختيار الأطراف -->
   <div id="roleScreen" class="hidden">
     <div class="progress-section">
       <div class="progress-circle" id="progressCircleRole">
@@ -676,7 +657,6 @@
     </div>
   </div>
 
-  <!-- شاشة الإدخال -->
   <div id="inputScreen" class="hidden">
     <div id="partyFormWrap"></div>
   </div>
@@ -711,6 +691,21 @@
           </div>
         </div>
 
+        <!-- إدارة الأكواد -->
+        <div class="admin-block">
+          <div class="admin-block-title">
+            🎲 <span data-i18n="codesManage">إدارة أكواد العقود</span>
+          </div>
+          <div class="admin-block-content">
+            <div style="font-size:12px; color:#666; margin-bottom:12px;" data-i18n="codesManageDesc">
+              توليد 5 أكواد جديدة يُلغي الأكواد الحالية. تُستخدم عند استهلاك جميع الأكواد السابقة.
+            </div>
+            <button class="btn-classic primary" onclick="confirmGenerateNewCodes()">
+              🎲 <span data-i18n="generateNewCodes">توليد 5 أكواد جديدة</span>
+            </button>
+          </div>
+        </div>
+
         <!-- معاينة العقد الحالي -->
         <div class="admin-block">
           <div class="admin-block-title">
@@ -727,7 +722,7 @@
             <div class="danger-classic">
               <div class="warning-title" data-i18n="dangerTitle">مسح البيانات المؤقتة</div>
               <div class="warning-desc" data-i18n="dangerDesc">
-                سيتم مسح جميع المسودات المحفوظة (ما عدا الأكواد الـ5 الثابتة).
+                سيتم مسح جميع المسودات المحفوظة (ما عدا الأكواد الـ5 والعقود المُرسلة).
               </div>
               <button class="btn-classic danger" onclick="confirmClearStorage()">
                 🗑 <span data-i18n="clearData">مسح البيانات المؤقتة</span>
@@ -736,7 +731,6 @@
           </div>
         </div>
 
-        <!-- زر الرجوع -->
         <div style="text-align:center; margin-top:20px; padding-top:15px; border-top:1px solid #ccc;">
           <button class="btn-classic" onclick="closeAdmin()">
             ← <span data-i18n="backToMain">رجوع للصفحة الرئيسية</span>
@@ -752,7 +746,6 @@
   </div>
 </div>
 
-<!-- Footer -->
 <footer>
   <div style="font-family: 'Amiri', serif; font-size: 15px; color: var(--gold-light); margin-bottom: 5px;">
     Arresalah e.V. — Berlin
@@ -803,7 +796,7 @@
 
 <script>
 /* ============================================================
-   إعدادات
+   الإعدادات
 ============================================================ */
 const EMAILJS_PUBLIC_KEY  = 'C8kuT0puk8RKrGYV_';
 const EMAILJS_SERVICE_ID  = 'service_fnme2dg';
@@ -846,10 +839,16 @@ const TRANSLATIONS = {
     thCode: 'الكود',
     thStatus: 'الحالة',
     thActions: 'إجراءات',
+    codesManage: 'إدارة أكواد العقود',
+    codesManageDesc: 'توليد 5 أكواد جديدة يُلغي الأكواد الحالية. تُستخدم عند استهلاك جميع الأكواد السابقة.',
+    generateNewCodes: 'توليد 5 أكواد جديدة',
+    newCodesGenerated: 'تم توليد 5 أكواد جديدة بنجاح',
+    codesWarning: '⚠️ سيتم حذف الأكواد الحالية وجميع المسودات والعقود المُرسلة المرتبطة بها. هل أنت متأكد؟',
+    codesWarningSent: '⚠️ تنبيه: يوجد {n} عقد مُرسل. توليد أكواد جديدة سيفقدك الربط بالعقود المرسلة.\n\nاستمرار؟',
     previewCurrent: 'معاينة العقد الحالي',
     dangerZone: 'منطقة الخطر',
     dangerTitle: 'مسح البيانات المؤقتة',
-    dangerDesc: 'سيتم مسح جميع المسودات المحفوظة (ما عدا الأكواد الـ5 الثابتة).',
+    dangerDesc: 'سيتم مسح جميع المسودات المحفوظة (ما عدا الأكواد الـ5 والعقود المُرسلة).',
     clearData: 'مسح البيانات المؤقتة',
     backToMain: 'رجوع للصفحة الرئيسية',
     adminLink: '• دخول المشرف / الإدارة •',
@@ -927,10 +926,16 @@ const TRANSLATIONS = {
     thCode: 'Code',
     thStatus: 'Status',
     thActions: 'Aktionen',
+    codesManage: 'Vertragscodes verwalten',
+    codesManageDesc: '5 neue Codes generieren löscht die aktuellen Codes. Verwenden Sie dies, wenn alle Codes verbraucht sind.',
+    generateNewCodes: '5 neue Codes generieren',
+    newCodesGenerated: '5 neue Codes erfolgreich generiert',
+    codesWarning: '⚠️ Die aktuellen Codes und alle zugehörigen Entwürfe und gesendeten Verträge werden gelöscht. Sind Sie sicher?',
+    codesWarningSent: '⚠️ Achtung: {n} gesendete Verträge vorhanden. Neue Codes trennen die Verbindung.\n\nFortfahren?',
     previewCurrent: 'Aktuelle Vorschau',
     dangerZone: 'Gefahrenzone',
     dangerTitle: 'Temporäre Daten löschen',
-    dangerDesc: 'Alle Entwürfe werden gelöscht (außer den 5 Codes).',
+    dangerDesc: 'Alle Entwürfe werden gelöscht (außer den 5 Codes und gesendeten Verträgen).',
     clearData: 'Daten löschen',
     backToMain: 'Zurück',
     adminLink: '• Administrator •',
@@ -1008,10 +1013,16 @@ const TRANSLATIONS = {
     thCode: 'Code',
     thStatus: 'Status',
     thActions: 'Actions',
+    codesManage: 'Manage Contract Codes',
+    codesManageDesc: 'Generating 5 new codes deletes current codes. Use when all codes are consumed.',
+    generateNewCodes: 'Generate 5 New Codes',
+    newCodesGenerated: 'Successfully generated 5 new codes',
+    codesWarning: '⚠️ Current codes and all related drafts and sent contracts will be deleted. Are you sure?',
+    codesWarningSent: '⚠️ Warning: {n} sent contract(s) exist. New codes will lose the link.\n\nContinue?',
     previewCurrent: 'Current Preview',
     dangerZone: 'Danger Zone',
     dangerTitle: 'Clear Temporary Data',
-    dangerDesc: 'All drafts will be cleared (except the 5 codes).',
+    dangerDesc: 'All drafts will be cleared (except the 5 codes and sent contracts).',
     clearData: 'Clear Data',
     backToMain: 'Back',
     adminLink: '• Admin •',
@@ -1636,7 +1647,7 @@ async function submitAllParties() {
 }
 
 /* ============================================================
-   لوحة الإدارة الكلاسيكية
+   لوحة الإدارة
 ============================================================ */
 function openAdminModal() {
   document.getElementById('pwModal').classList.remove('hidden');
@@ -1662,7 +1673,6 @@ function showAdminPanel() {
 }
 
 function renderAdmin() {
-  // جدول الأكواد
   const tbody = document.getElementById('adminCodeTable');
   tbody.innerHTML = '';
   const status = getContractStatus();
@@ -1686,7 +1696,6 @@ function renderAdmin() {
     tbody.appendChild(tr);
   });
 
-  // معاينة العقد الحالي
   document.getElementById('previewContractCode').textContent = 
     currentContractCode ? currentContractCode : '';
   const content = document.getElementById('currentContractContent');
@@ -1759,22 +1768,69 @@ function closeAdmin() {
 }
 
 /* ============================================================
-   مسح الذاكرة
+   مسح البيانات المؤقتة (يحتفظ بالأكواد والعقود المُرسلة)
 ============================================================ */
 function confirmClearStorage() {
   const pw = prompt('🔐 أدخل كلمة سر مسح البيانات:');
   if (pw !== CLEAR_PASSWORD) return toast('كلمة المرور خاطئة', 'error');
-  if (!confirm('⚠️ هل أنت متأكد؟ سيتم مسح جميع البيانات المؤقتة (ما عدا الأكواد 5)')) return;
-  const keysToKeep = ['contract_codes', 'lang'];
+  if (!confirm('⚠️ هل أنت متأكد؟ سيتم مسح المسودات فقط (الأكواد والعقود المُرسلة محفوظة)')) return;
+  
+  // احذف المسودات فقط
   const allKeys = Object.keys(localStorage);
   let cleared = 0;
   allKeys.forEach(k => {
-    if (!keysToKeep.includes(k)) {
+    if (k.startsWith('draft_')) {
       localStorage.removeItem(k);
       cleared++;
     }
   });
-  toast(`✅ تم مسح ${cleared} عنصر — الأكواد الـ5 محفوظة`, 'success');
+  
+  toast(`✅ تم مسح ${cleared} مسودة — الأكواد والعقود محفوظة`, 'success');
+  renderAdmin();
+}
+
+/* ============================================================
+   توليد 5 أكواد جديدة (يمسح كل شيء)
+============================================================ */
+function confirmGenerateNewCodes() {
+  // 1. احسب عدد العقود المُرسلة
+  const sentCount = Object.keys(localStorage)
+    .filter(k => k.startsWith('contract_finished_'))
+    .length;
+
+  // 2. تنبيه إذا كان هناك عقود مُرسلة
+  if (sentCount > 0) {
+    const msg = t('codesWarningSent').replace('{n}', sentCount);
+    if (!confirm(msg)) return;
+  }
+
+  // 3. طلب كلمة السر
+  const pw = prompt('🔐 أدخل كلمة سر توليد أكواد جديدة:');
+  if (pw !== CLEAR_PASSWORD) {
+    return toast('كلمة المرور خاطئة', 'error');
+  }
+
+  // 4. تأكيد نهائي
+  if (!confirm(t('codesWarning'))) return;
+
+  // 5. احذف جميع البيانات المرتبطة بالأكواد القديمة (ما عدا اللغة)
+  const keysToKeep = ['lang'];
+  const allKeys = Object.keys(localStorage);
+  allKeys.forEach(k => {
+    if (!keysToKeep.includes(k)) {
+      localStorage.removeItem(k);
+    }
+  });
+
+  // 6. ولّد 5 أكواد جديدة
+  contractCodes = [];
+  for (let i = 0; i < 5; i++) {
+    contractCodes.push(generateRandomCode());
+  }
+  localStorage.setItem('contract_codes', JSON.stringify(contractCodes));
+
+  // 7. أعِد عرض لوحة الإدارة
+  toast('✓ ' + t('newCodesGenerated'), 'success');
   renderAdmin();
 }
 
