@@ -399,9 +399,6 @@
   }
   .help-list .contact-line:last-child { border-bottom: none; }
 
-  /* ============================================================
-     لوحة الإدارة - كلاسيكية
-  ============================================================ */
   .admin-classic {
     background: #fff;
     border: 1px solid #ccc;
@@ -661,7 +658,6 @@
     <div id="partyFormWrap"></div>
   </div>
 
-  <!-- لوحة الإدارة الكلاسيكية -->
   <div id="adminPanel" class="hidden">
     <div class="admin-classic">
       <div class="admin-classic-header">
@@ -671,7 +667,6 @@
 
       <div class="admin-classic-body">
 
-        <!-- جدول الأكواد -->
         <div class="admin-block">
           <div class="admin-block-title">
             📋 <span data-i18n="contractCodes">أكواد العقود (5 عقود)</span>
@@ -691,7 +686,6 @@
           </div>
         </div>
 
-        <!-- إدارة الأكواد -->
         <div class="admin-block">
           <div class="admin-block-title">
             🎲 <span data-i18n="codesManage">إدارة أكواد العقود</span>
@@ -706,7 +700,6 @@
           </div>
         </div>
 
-        <!-- معاينة العقد الحالي -->
         <div class="admin-block">
           <div class="admin-block-title">
             👁 <span data-i18n="previewCurrent">معاينة العقد الحالي</span>
@@ -715,7 +708,6 @@
           <div class="admin-block-content" id="currentContractContent"></div>
         </div>
 
-        <!-- منطقة الخطر -->
         <div class="admin-block">
           <div class="admin-block-title">⚠️ <span data-i18n="dangerZone">منطقة الخطر</span></div>
           <div class="admin-block-content">
@@ -756,7 +748,6 @@
   </div>
 </footer>
 
-<!-- Modal كلمة مرور الإدارة -->
 <div id="pwModal" class="modal-overlay hidden">
   <div class="modal">
     <h3>🔑 <span data-i18n="adminLogin">دخول الإدارة</span></h3>
@@ -769,7 +760,6 @@
   </div>
 </div>
 
-<!-- Modal معاينة عقد -->
 <div id="previewModal" class="modal-overlay hidden">
   <div class="modal" style="max-width: 550px;">
     <h3 id="previewTitle">معاينة</h3>
@@ -778,7 +768,6 @@
   </div>
 </div>
 
-<!-- Modal مساعدة -->
 <div id="helpModal" class="modal-overlay hidden">
   <div class="modal">
     <h3>❓ <span data-i18n="helpTitle">كيف أحصل على رقم العقد؟</span></h3>
@@ -1564,6 +1553,9 @@ async function submitAllParties() {
   const witness1Status = w1.witnessIsCenter ? 'Center Witness' : 'Witness present';
   const witness2Status = w2.witnessIsCenter ? 'Center Witness' : 'Witness present';
 
+  // ⚠️ مهم: groom_dowry مضاف لأجل التوافق مع القالب القديم أيضاً
+  const dowryCombined = (g.dowryAdvance || '0') + ' / ' + (g.dowryDeferred || '0');
+
   const payload = {
     to_email: ADMIN_EMAIL,
     contract_code: currentContractCode,
@@ -1575,9 +1567,12 @@ async function submitAllParties() {
     groom_address: `${g.addressStreet||''} ${g.addressNumber||''}`.trim() || '—',
     groom_postal: g.postalCode || '—', groom_city: g.city || '—',
     groom_mother_de: g.motherNameDe || '—', groom_mother_ar: g.motherNameAr || '—',
+    // ⚠️ المتغيرات الثلاثة الأساسية للمهر:
     groom_dowry_advance: g.dowryAdvance || '—',
     groom_dowry_deferred: g.dowryDeferred || '—',
     groom_dowry_notes: g.dowryNotes || '—',
+    // احتياطي للقالب القديم:
+    groom_dowry: dowryCombined,
     bride_name_de: b.nameDe || '—', bride_name_ar: b.nameAr || '—',
     bride_birth: getBirthDate(b),
     bride_birth_region: b.birthRegion || '—', bride_birth_country: b.birthCountry || '—',
@@ -1768,14 +1763,13 @@ function closeAdmin() {
 }
 
 /* ============================================================
-   مسح البيانات المؤقتة (يحتفظ بالأكواد والعقود المُرسلة)
+   مسح البيانات المؤقتة
 ============================================================ */
 function confirmClearStorage() {
   const pw = prompt('🔐 أدخل كلمة سر مسح البيانات:');
   if (pw !== CLEAR_PASSWORD) return toast('كلمة المرور خاطئة', 'error');
   if (!confirm('⚠️ هل أنت متأكد؟ سيتم مسح المسودات فقط (الأكواد والعقود المُرسلة محفوظة)')) return;
   
-  // احذف المسودات فقط
   const allKeys = Object.keys(localStorage);
   let cleared = 0;
   allKeys.forEach(k => {
@@ -1790,30 +1784,25 @@ function confirmClearStorage() {
 }
 
 /* ============================================================
-   توليد 5 أكواد جديدة (يمسح كل شيء)
+   توليد 5 أكواد جديدة
 ============================================================ */
 function confirmGenerateNewCodes() {
-  // 1. احسب عدد العقود المُرسلة
   const sentCount = Object.keys(localStorage)
     .filter(k => k.startsWith('contract_finished_'))
     .length;
 
-  // 2. تنبيه إذا كان هناك عقود مُرسلة
   if (sentCount > 0) {
     const msg = t('codesWarningSent').replace('{n}', sentCount);
     if (!confirm(msg)) return;
   }
 
-  // 3. طلب كلمة السر
   const pw = prompt('🔐 أدخل كلمة سر توليد أكواد جديدة:');
   if (pw !== CLEAR_PASSWORD) {
     return toast('كلمة المرور خاطئة', 'error');
   }
 
-  // 4. تأكيد نهائي
   if (!confirm(t('codesWarning'))) return;
 
-  // 5. احذف جميع البيانات المرتبطة بالأكواد القديمة (ما عدا اللغة)
   const keysToKeep = ['lang'];
   const allKeys = Object.keys(localStorage);
   allKeys.forEach(k => {
@@ -1822,14 +1811,12 @@ function confirmGenerateNewCodes() {
     }
   });
 
-  // 6. ولّد 5 أكواد جديدة
   contractCodes = [];
   for (let i = 0; i < 5; i++) {
     contractCodes.push(generateRandomCode());
   }
   localStorage.setItem('contract_codes', JSON.stringify(contractCodes));
 
-  // 7. أعِد عرض لوحة الإدارة
   toast('✓ ' + t('newCodesGenerated'), 'success');
   renderAdmin();
 }
